@@ -1,0 +1,566 @@
+/**
+ * Elevate Scholars Rwanda - Design System
+ * Custom design system featuring Rwandan cultural elements and Agaciro branding
+ */
+
+@charset "UTF-8";
+
+/*--------------------------------------------------------------
+# Color Palette - Rwandan Cultural Colors
+--------------------------------------------------------------*/
+:root {
+  /* Primary Colors - Inspired by Rwanda's flag */
+  --primary-blue: #00A1DE;        /* Rwanda blue - sky, peace, happiness */
+  --primary-yellow: #FAD201;      /* Rwanda yellow - economic development */
+  --primary-green: #20603D;       /* Rwanda green - hope, prosperity */
+  
+  /* Agaciro Brand Colors */
+  --agaciro-gold: #C9A147;        /* Gold represents dignity and worth */
+  --agaciro-deep-blue: #003D5C;   /* Deep blue for trust and leadership */
+  --agaciro-burgundy: #6B1C23;    /* Burgundy for strength and heritage */
+  
+  /* Neutral Palette */
+  --neutral-50: #F8FAFA;
+  --neutral-100: #F1F5F7;
+  --neutral-200: #E5EAED;
+  --neutral-300: #CBD5DA;
+  --neutral-400: #9CAAB3;
+  --neutral-500: #6B7D86;
+  --neutral-600: #4A5C66;
+  --neutral-700: #2E3D47;
+  --neutral-800: #1A2630;
+  --neutral-900: #0D1419;
+  
+  /* Semantic Colors */
+  --success: #20603D;
+  --warning: #FAD201;
+  --error: #E74C3C;
+  --info: #00A1DE;
+  
+  /* Gradient Backgrounds */
+  --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--agaciro-deep-blue) 100%);
+  --gradient-agaciro: linear-gradient(135deg, var(--agaciro-gold) 0%, var(--agaciro-burgundy) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(0, 161, 222, 0.95) 0%, rgba(0, 61, 92, 0.95) 100%);
+}
+
+/*--------------------------------------------------------------
+# Typography System
+--------------------------------------------------------------*/
+:root {
+  /* Font Families */
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Montserrat', 'Poppins', sans-serif;
+  --font-accent: 'Playfair Display', Georgia, serif;
+  
+  /* Font Sizes - Fluid Typography */
+  --font-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --font-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --font-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+  --font-2xl: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --font-3xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --font-4xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  
+  /* Font Weights */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+}
+
+/*--------------------------------------------------------------
+# Spacing System
+--------------------------------------------------------------*/
+:root {
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+}
+
+/*--------------------------------------------------------------
+# Border Radius System
+--------------------------------------------------------------*/
+:root {
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/*--------------------------------------------------------------
+# Shadow System
+--------------------------------------------------------------*/
+:root {
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/*--------------------------------------------------------------
+# Animation & Transitions
+--------------------------------------------------------------*/
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/*--------------------------------------------------------------
+# Global Reset & Base Styles
+--------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-base);
+  line-height: var(--leading-normal);
+  color: var(--neutral-800);
+  background-color: var(--neutral-50);
+  overflow-x: hidden;
+}
+
+/* Typography Elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+}
+
+h1 { font-size: var(--font-4xl); }
+h2 { font-size: var(--font-3xl); }
+h3 { font-size: var(--font-2xl); }
+h4 { font-size: var(--font-xl); }
+h5 { font-size: var(--font-lg); }
+h6 { font-size: var(--font-base); }
+
+p {
+  margin-bottom: var(--space-4);
+  color: var(--neutral-700);
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--agaciro-deep-blue);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*--------------------------------------------------------------
+# Utility Classes
+--------------------------------------------------------------*/
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--primary-blue); }
+.text-gold { color: var(--agaciro-gold); }
+.text-green { color: var(--primary-green); }
+
+.font-accent { font-family: var(--font-accent); }
+.font-bold { font-weight: var(--weight-bold); }
+.font-semibold { font-weight: var(--weight-semibold); }
+
+/* Background Utilities */
+.bg-primary { background-color: var(--primary-blue); }
+.bg-gold { background-color: var(--agaciro-gold); }
+.bg-gradient-primary { background: var(--gradient-primary); }
+.bg-gradient-agaciro { background: var(--gradient-agaciro); }
+
+/* Spacing Utilities */
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-8 { margin-top: var(--space-8); }
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+.p-4 { padding: var(--space-4); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+
+/* Display Utilities */
+.flex { display: flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/*--------------------------------------------------------------
+# Button Components
+--------------------------------------------------------------*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-primary);
+  font-size: var(--font-base);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width var(--transition-slow), height var(--transition-slow);
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: white;
+}
+
+.btn-gold {
+  background: var(--agaciro-gold);
+  color: var(--neutral-900);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-gold:hover {
+  background: var(--agaciro-burgundy);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.btn-outline:hover {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.btn-lg {
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--font-lg);
+}
+
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-sm);
+}
+
+/*--------------------------------------------------------------
+# Card Components
+--------------------------------------------------------------*/
+.card {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card-header {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.card-body {
+  padding: var(--space-6);
+}
+
+.card-footer {
+  padding: var(--space-6);
+  border-top: 1px solid var(--neutral-200);
+  background: var(--neutral-50);
+}
+
+/*--------------------------------------------------------------
+# Badge Components
+--------------------------------------------------------------*/
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-full);
+  background: var(--neutral-200);
+  color: var(--neutral-700);
+}
+
+.badge-gold {
+  background: var(--agaciro-gold);
+  color: var(--neutral-900);
+}
+
+.badge-blue {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.badge-green {
+  background: var(--primary-green);
+  color: white;
+}
+
+/*--------------------------------------------------------------
+# Section Styles
+--------------------------------------------------------------*/
+.section {
+  padding: var(--space-20) 0;
+  position: relative;
+}
+
+.section-sm {
+  padding: var(--space-12) 0;
+}
+
+.section-lg {
+  padding: var(--space-32) 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.section-title h2 {
+  font-size: var(--font-3xl);
+  margin-bottom: var(--space-4);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-agaciro);
+  border-radius: var(--radius-full);
+}
+
+.section-title p {
+  font-size: var(--font-lg);
+  color: var(--neutral-600);
+  max-width: 600px;
+  margin: var(--space-6) auto 0;
+}
+
+/*--------------------------------------------------------------
+# Agaciro Cultural Elements
+--------------------------------------------------------------*/
+.agaciro-pattern {
+  position: relative;
+}
+
+.agaciro-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(201, 161, 71, 0.03) 35px,
+      rgba(201, 161, 71, 0.03) 70px
+    );
+  pointer-events: none;
+}
+
+.cultural-accent {
+  border-left: 4px solid var(--agaciro-gold);
+  padding-left: var(--space-6);
+}
+
+/*--------------------------------------------------------------
+# Responsive Design
+--------------------------------------------------------------*/
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  .section {
+    padding: var(--space-16) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+  
+  .section {
+    padding: var(--space-12) 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+  
+  .section {
+    padding: var(--space-8) 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Animation Keyframes
+--------------------------------------------------------------*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.6s ease-out forwards;
+}
