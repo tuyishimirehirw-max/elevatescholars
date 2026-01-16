@@ -1,0 +1,445 @@
+/* Registration Form Styles */
+
+/* Multi-step Progress Indicator */
+.registration-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-12);
+    position: relative;
+}
+
+.registration-progress::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--neutral-300);
+    z-index: 0;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.progress-step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--neutral-300);
+    color: var(--neutral-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-2);
+    transition: all var(--transition-base);
+}
+
+.progress-step.active .progress-step-number {
+    background: var(--agaciro-gold);
+    color: white;
+    transform: scale(1.1);
+}
+
+.progress-step.completed .progress-step-number {
+    background: var(--primary-green);
+    color: white;
+}
+
+.progress-step.completed .progress-step-number::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.progress-step.completed .progress-step-number span {
+    display: none;
+}
+
+.progress-step-label {
+    font-size: var(--font-sm);
+    color: var(--neutral-600);
+    text-align: center;
+    font-weight: var(--weight-medium);
+}
+
+.progress-step.active .progress-step-label {
+    color: var(--agaciro-gold);
+    font-weight: var(--weight-bold);
+}
+
+/* Form Steps */
+.form-step {
+    display: none;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: var(--space-6);
+}
+
+.form-group label {
+    display: block;
+    font-weight: var(--weight-semibold);
+    color: var(--neutral-800);
+    margin-bottom: var(--space-2);
+}
+
+.form-group label .required {
+    color: var(--primary-red);
+    margin-left: 2px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-4);
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-primary);
+    font-size: var(--font-base);
+    transition: all var(--transition-base);
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--agaciro-gold);
+    box-shadow: 0 0 0 3px rgba(201, 161, 71, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: var(--primary-red);
+}
+
+.form-group .error-message {
+    color: var(--primary-red);
+    font-size: var(--font-sm);
+    margin-top: var(--space-2);
+    display: none;
+}
+
+.form-group.has-error .error-message {
+    display: block;
+}
+
+.form-group .help-text {
+    font-size: var(--font-sm);
+    color: var(--neutral-600);
+    margin-top: var(--space-2);
+}
+
+/* Two Column Layout */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+}
+
+/* Radio/Checkbox Groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.radio-option,
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    padding: var(--space-4);
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.radio-option:hover,
+.checkbox-option:hover {
+    border-color: var(--agaciro-gold);
+    background: rgba(201, 161, 71, 0.05);
+}
+
+.radio-option.selected,
+.checkbox-option.selected {
+    border-color: var(--agaciro-gold);
+    background: rgba(201, 161, 71, 0.1);
+}
+
+.radio-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+    margin-right: var(--space-3);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.radio-option label,
+.checkbox-option label {
+    flex: 1;
+    cursor: pointer;
+    margin: 0;
+    font-weight: var(--weight-medium);
+}
+
+/* Payment Method Cards */
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.payment-method {
+    padding: var(--space-6);
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.payment-method:hover {
+    border-color: var(--agaciro-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.payment-method.selected {
+    border-color: var(--agaciro-gold);
+    background: rgba(201, 161, 71, 0.1);
+}
+
+.payment-method.selected::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--primary-green);
+    font-size: var(--font-lg);
+}
+
+.payment-method input[type="radio"] {
+    display: none;
+}
+
+.payment-method i {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
+    color: var(--agaciro-gold);
+}
+
+.payment-method h5 {
+    margin-bottom: var(--space-2);
+    font-weight: var(--weight-bold);
+}
+
+.payment-method p {
+    font-size: var(--font-sm);
+    color: var(--neutral-600);
+    margin: 0;
+}
+
+/* Form Navigation Buttons */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--neutral-200);
+}
+
+.btn-previous {
+    background: white;
+    color: var(--neutral-700);
+    border: 2px solid var(--neutral-400);
+}
+
+.btn-previous:hover {
+    background: var(--neutral-100);
+    border-color: var(--neutral-500);
+    transform: translateY(-2px);
+}
+
+/* Summary Section */
+.registration-summary {
+    background: var(--neutral-100);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-8);
+}
+
+.registration-summary h4 {
+    margin-bottom: var(--space-6);
+    color: var(--neutral-800);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--neutral-300);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    font-weight: var(--weight-bold);
+    font-size: var(--font-lg);
+    padding-top: var(--space-4);
+    margin-top: var(--space-4);
+    border-top: 2px solid var(--neutral-400);
+}
+
+.summary-label {
+    color: var(--neutral-600);
+}
+
+.summary-value {
+    color: var(--neutral-800);
+    font-weight: var(--weight-semibold);
+}
+
+/* Success/Error Messages */
+.alert {
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.alert i {
+    font-size: var(--font-xl);
+}
+
+.alert-success {
+    background: rgba(32, 96, 61, 0.1);
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.alert-error {
+    background: rgba(220, 38, 38, 0.1);
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
+}
+
+.alert-warning {
+    background: rgba(201, 161, 71, 0.1);
+    border: 2px solid var(--agaciro-gold);
+    color: var(--agaciro-burgundy);
+}
+
+.alert-info {
+    background: rgba(0, 161, 222, 0.1);
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* Terms and Conditions */
+.terms-box {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: var(--space-6);
+    background: var(--neutral-50);
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    font-size: var(--font-sm);
+    line-height: var(--leading-relaxed);
+}
+
+.terms-box h5 {
+    margin-bottom: var(--space-3);
+    color: var(--neutral-800);
+}
+
+.terms-box p {
+    margin-bottom: var(--space-3);
+    color: var(--neutral-700);
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid var(--neutral-200);
+    border-top: 3px solid var(--agaciro-gold);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .registration-progress {
+        overflow-x: auto;
+        padding-bottom: var(--space-4);
+    }
+
+    .progress-step-label {
+        font-size: var(--font-xs);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .form-navigation {
+        flex-direction: column-reverse;
+    }
+
+    .btn-previous,
+    .btn-next {
+        width: 100%;
+    }
+}
