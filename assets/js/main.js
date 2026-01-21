@@ -134,3 +134,55 @@ window.ElevateScholars = {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Elevate Scholars Rwanda website initialized');
 });
+//for supabase
+const SUPABASE_URL = "https://edjegahltxocgamfiquo.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkamVnYWhsdHhvY2dhbWZpcXVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg4MjA0NDgsImV4cCI6MjA4NDM5NjQ0OH0.BXX5tum4rzuPKrCt-ouR8BQFfZDFZaVQjcy57SVGMC8";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = {
+      name: contactForm.name.value.trim(),
+      email: contactForm.email.value.trim(),
+      phone: contactForm.phone.value.trim(),
+      inquiry_type: contactForm.inquiryType.value,
+      program: contactForm.program.value || null,
+      message: contactForm.message.value.trim(),
+      source: "contact-page"
+    };
+
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.inquiry_type || !formData.message) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      alert("Thank you for contacting Elevate Scholars. We will respond within 24 hours.");
+      contactForm.reset();
+
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again later.");
+    }
+  });
+});
