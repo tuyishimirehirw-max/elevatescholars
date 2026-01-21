@@ -82,6 +82,7 @@
                 </div>
             </div>
         </section>
+       
 
         <!-- Contact Cards -->
         <section class="section">
@@ -567,24 +568,6 @@
                     }
                 });
             });
-
-            // Contact Form Submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    // Validation
-                    if (!ElevateScholars.validateForm(contactForm)) {
-                        alert('Please fill in all required fields correctly.');
-                        return;
-                    }
-
-                    // Show success message
-                    alert('Thank you for contacting us! We will get back to you within 24 hours.');
-                    contactForm.reset();
-                });
-            }
         });
     </script>
 
