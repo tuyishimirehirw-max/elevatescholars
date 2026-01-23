@@ -62,7 +62,7 @@
 }
 
 .logo-img {
-    height: 90px;           /* Adjust based on your logo */
+    height: 70px;           /* Adjust based on your logo */
     width: auto;            /* Maintains aspect ratio */
     display: block;
     transition: transform 0.3s ease;
@@ -545,4 +545,5 @@ main {
     .footer-main {
         grid-template-columns: 1fr;
     }
+
 }
