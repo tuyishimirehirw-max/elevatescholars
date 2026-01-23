@@ -1,5 +1,5 @@
 /**
- * Elevate Scholars Rwanda - Main Stylesheet
+ * The Voices Of Future Rwanda - Main Stylesheet
  * Imports design system and page-specific styles
  */
 
@@ -50,35 +50,41 @@
     color: var(--agaciro-deep-blue);
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
+/* ============================================
+   LOGO STYLES - Image Based
+   ============================================ */
+
+.navbar-logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: var(--gradient-agaciro);
-    border-radius: var(--radius-md);
-    color: white;
-    font-weight: var(--weight-bold);
-    font-size: var(--font-lg);
+    gap: 0.5rem;
+    text-decoration: none;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
+.logo-img {
+    height: 90px;           /* Adjust based on your logo */
+    width: auto;            /* Maintains aspect ratio */
+    display: block;
+    transition: transform 0.3s ease;
 }
 
-.logo-text .main {
-    font-size: var(--font-xl);
+/* Hover effect */
+.navbar-logo:hover .logo-img {
+    transform: scale(1.05);
 }
 
-.logo-text .sub {
-    font-size: var(--font-xs);
-    font-weight: var(--weight-normal);
-    color: var(--agaciro-gold);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+/* Responsive - Smaller on mobile */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+}
+
+/* Optional: If you kept a tagline */
+.logo-tagline {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
 }
 
 .navbar-menu {

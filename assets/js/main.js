@@ -1,5 +1,5 @@
 /**
- * Elevate Scholars Rwanda - Main JavaScript
+ * The Voices Of Future Rwanda - Main JavaScript
  * Handles navigation, mobile menu, and interactive components
  */
 
@@ -132,7 +132,7 @@ window.ElevateScholars = {
 
 // Initialize any tooltips or popovers (if using Bootstrap components)
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Elevate Scholars Rwanda website initialized');
+  console.log('The Voices Of Future Rwanda website initialized');
 });
 //for supabase
 const SUPABASE_URL = "https://edjegahltxocgamfiquo.supabase.co";
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Submission failed");
       }
 
-      alert("Thank you for contacting Elevate Scholars. We will respond within 24 hours.");
+      alert("Thank you for contacting The Voices Of Future Rwanda. We will respond within 24 hours.");
       contactForm.reset();
 
     } catch (error) {
