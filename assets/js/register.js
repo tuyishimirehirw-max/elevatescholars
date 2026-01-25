@@ -369,32 +369,59 @@ class RegistrationForm {
     }
 
     async submitToServer(data) {
-        // Placeholder for actual API integration
-        // Replace this with your actual backend endpoint
-        console.log('Registration Data:', data);
+        try {
+            // Prepare data for Supabase
+            const registrationData = {
+                user_type: data.userType,
+                first_name: data.firstName,
+                last_name: data.lastName,
+                date_of_birth: data.dob,
+                gender: data.gender,
+                school: data.school,
+                grade_level: data.gradeLevel,
+                email: data.email,
+                phone: data.phone,
+                whatsapp: data.whatsapp,
+                parent_name: data.parentName || null,
+                parent_email: data.parentEmail || null,
+                parent_phone: data.parentPhone || null,
+                school_name: data.schoolName || null,
+                school_size: data.schoolSize || null,
+                school_role: data.schoolRole || null,
+                program: data.program,
+                goals: data.goals,
+                experience: data.experience || null,
+                how_heard: data.howHeard || null,
+                payment_method: data.paymentMethod,
+                agreed_to_terms: true,
+                status: 'pending'
+            };
 
-        // Simulate network delay
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve({ success: true });
-            }, 2000);
-        });
+            console.log('Submitting registration to database...', registrationData);
 
-        /* Example actual implementation:
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        
-        if (!response.ok) {
-          throw new Error('Registration failed');
+            // Insert into Supabase
+            const { data: result, error } = await supabase
+                .from('registrations')
+                .insert([registrationData])
+                .select();
+
+            if (error) {
+                console.error('Supabase error:', error);
+                throw new Error(error.message);
+            }
+
+            console.log('✅ Registration successful:', result);
+            
+            // Optional: Send confirmation email via Supabase Edge Function
+            // This would require setting up an Edge Function in Supabase
+            // await this.sendConfirmationEmail(data.email, result[0].id);
+            
+            return { success: true, data: result };
+            
+        } catch (error) {
+            console.error('❌ Registration submission error:', error);
+            throw error;
         }
-        
-        return await response.json();
-        */
     }
 
     showSuccessPage() {

@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Enroll in The Voices Of Future Rwanda programs. Choose from Junior Orators, Global Scholars, or Executive Communicator and start your journey to leadership excellence.">
-    <meta name="keywords" content="enroll Rwanda debate, register leadership program, The Voices Of Future Rwanda registration">
+    <meta name="keywords"
+        content="enroll Rwanda debate, register leadership program, The Voices Of Future Rwanda registration">
 
     <title>Enroll Now - Start Your Journey | The Voices Of Future Rwanda</title>
 
     <!-- Add these lines if they don't exist -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo/apple-touch-icon.png">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -27,39 +28,37 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-    <div class="container navbar-container">
-     <a href="index.html" class="navbar-logo">
-        <img src="assets/img/logo/logo.png" 
-             alt="The Voices Of Future Rwanda" 
-             class="logo-img">
-        <span class="logo-tagline">The Voices Of Future Rwanda</span>
-     </a>
-      
-      <ul class="navbar-menu">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li class="dropdown">
-          <a href="programs.html" class="dropdown-toggle">Programs</a>
-          <div class="dropdown-menu">
-            <a href="programs/junior-orators.html">Junior Orators</a>
-            <a href="programs/global-scholars.html">Global Scholars</a>
-            <a href="programs/executive-communicator.html">Executive Communicator</a>
-          </div>
-        </li>
-        <li><a href="scholars/index.html">Scholar Portfolios</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li class="navbar-cta">
-          <a href="register.html" class="btn btn-gold btn-sm">Enroll Now</a>
-        </li>
-      </ul>
-      
-      <button class="navbar-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+                <span class="logo-tagline">The Voices Of Future Rwanda</span>
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="programs.html" class="dropdown-toggle">Programs</a>
+                    <div class="dropdown-menu">
+                        <a href="programs/junior-orators.html">Junior Orators</a>
+                        <a href="programs/global-scholars.html">Global Scholars</a>
+                        <a href="programs/executive-communicator.html">Executive Communicator</a>
+                    </div>
+                </li>
+                <li><a href="scholars/index.html">Scholar Portfolios</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="navbar-cta">
+                    <a href="register.html" class="btn btn-gold btn-sm">Enroll Now</a>
+                </li>
+            </ul>
+
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
     <!-- Main Content -->
     <main style="padding-top: var(--space-20); padding-bottom: var(--space-20); background: var(--neutral-50);">
@@ -75,7 +74,8 @@
                         <i class="fas fa-rocket"></i>
                         <span>Start Your Journey</span>
                     </div>
-                    <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-4);">Enroll in The Voices Of Future Rwanda
+                    <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-4);">Enroll in The Voices Of
+                        Future Rwanda
                     </h1>
                     <p style="font-size: var(--font-lg); color: var(--neutral-600); max-width: 600px; margin: 0 auto;">
                         Complete this simple registration to begin your transformation into a confident communicator and
@@ -125,7 +125,7 @@
                             <div class="form-step active" data-step="1">
                                 <h3 style="margin-bottom: var(--space-6);">Who is enrolling?</h3>
 
-                                <div class="radio-group">
+                                <div class="radio-group form-group">
                                     <div class="radio-option">
                                         <input type="radio" id="userParent" name="userType" value="parent" required>
                                         <label for="userParent">
@@ -364,7 +364,7 @@
                             <div class="form-step" data-step="4">
                                 <h3 style="margin-bottom: var(--space-6);">Select Your Program</h3>
 
-                                <div class="radio-group">
+                                <div class="radio-group form-group">
                                     <div class="radio-option">
                                         <input type="radio" id="programJunior" name="program" value="junior-orators"
                                             required>
@@ -777,7 +777,9 @@
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/register.js"></script>
-
+    <!-- Add BEFORE closing </body> tag -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
 </body>
 
 </html>

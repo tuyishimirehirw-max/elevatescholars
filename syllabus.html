@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="The Voices Of Future Rwanda - Premier leadership and communication academy serving students from primary through professional levels via competitive debate and executive coaching.">
+  <meta name="keywords"
+    content="Rwanda education, leadership academy, debate training, communication skills, Agaciro, executive coaching">
+  <title>The Voices Of Future Rwanda | Leadership & Communication Academy</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+        <span class="logo-tagline">The Voices Of Future Rwanda</span>
+      </a>
+
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="programs.html" class="dropdown-toggle">Programs</a>
+          <div class="dropdown-menu">
+            <a href="programs/junior-orators.html">Junior Orators</a>
+            <a href="programs/global-scholars.html">Global Scholars</a>
+            <a href="programs/executive-communicator.html">Executive Communicator</a>
+          </div>
+        </li>
+        <li><a href="scholars/index.html">Scholar Portfolios</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="navbar-cta">
+          <a href="register.html" class="btn btn-gold btn-sm">Enroll Now</a>
+        </li>
+      </ul>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Curriculum</h1>
+      <p>Structured learning paths designed to unlock potential</p>
+    </div>
+  </section>
+
+  <!-- SYLLABUS CONTENT -->
+  <section class="syllabus-section">
+    <div class="container">
+
+      <!-- Filter Buttons -->
+      <div class="level-filter">
+        <button class="filter-btn active" data-level="all">All Levels</button>
+        <button class="filter-btn" data-level="Junior">Junior Orators</button>
+        <button class="filter-btn" data-level="Primary">Primary</button>
+        <button class="filter-btn" data-level="Secondary">Secondary</button>
+        <button class="filter-btn" data-level="University">University</button>
+      </div>
+
+      <!-- Dynamic Content Container -->
+      <div id="syllabus-container">
+        <!-- Modules will load here -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+
+        <div class="footer-section footer-about">
+          <h4>The Voices Of Future Rwanda</h4>
+          <p>
+            Rwanda's premier leadership and communication academy, empowering students from primary to professional
+            levels through the transformative power of Agaciro.
+          </p>
+          <div class="footer-agaciro">
+            <i class="fas fa-gem"></i>
+            <span>Building Leaders with Dignity</span>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="scholars/index.html">Scholar Portfolios</a></li>
+            <li><a href="student/login.html">Student Portal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Programs</h4>
+          <ul class="footer-links">
+            <li><a href="programs/junior-orators.html">Junior Orators</a></li>
+            <li><a href="programs/global-scholars.html">Global Scholars</a></li>
+            <li><a href="programs/executive-communicator.html">Executive Communicator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section footer-contact">
+          <h4>Contact Us</h4>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Kigali, Rwanda</span>
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <span>thevoicesoffuturerwanda@gmail.com</span>
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            <span>+250 786 948 770</span>
+          </p>
+
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 The Voices Of Future Rwanda. All rights reserved. Made with <span class="footer-heart">♥</span> by
+          TeenzNation250.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/syllabus.js"></script>
+</body>
+
+</html>

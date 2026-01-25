@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Admin Panel</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <img src="../assets/img/logo/logo-small.png" alt="Logo" class="admin-sidebar-logo"
+                    onerror="this.src='../assets/img/logo/logo.png'">
+                <p class="admin-sidebar-title">Admin Panel</p>
+            </div>
+
+            <nav class="admin-nav">
+                <a href="dashboard.html" class="admin-nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="registrations.html" class="admin-nav-item">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Registrations</span>
+                </a>
+                <a href="contacts.html" class="admin-nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Messages</span>
+                </a>
+                <a href="programs.html" class="admin-nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Programs</span>
+                </a>
+                <a href="syllabus.html" class="admin-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Syllabus</span>
+                </a>
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 1rem 0;">
+                <a href="#" class="admin-nav-item btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1>Dashboard</h1>
+                <div class="admin-user-menu">
+                    <div class="admin-user-info">
+                        <span class="admin-user-name">Loading...</span>
+                        <span class="admin-user-role">Admin</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Registrations</div>
+                    <div class="stat-value" id="totalRegistrations">0</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i> <span id="registrationsChange">0</span> this week
+                    </div>
+                </div>
+
+                <div class="stat-card gold">
+                    <div class="stat-label">Pending Approvals</div>
+                    <div class="stat-value" id="pendingRegistrations">0</div>
+                    <div class="stat-change">
+                        <i class="fas fa-clock"></i> Awaiting review
+                    </div>
+                </div>
+
+                <div class="stat-card green">
+                    <div class="stat-label">Active Programs</div>
+                    <div class="stat-value" id="activePrograms">0</div>
+                    <div class="stat-change">
+                        <i class="fas fa-check-circle"></i> Published
+                    </div>
+                </div>
+
+                <div class="stat-card blue">
+                    <div class="stat-label">Contact Messages</div>
+                    <div class="stat-value" id="newContacts">0</div>
+                    <div class="stat-change">
+                        <i class="fas fa-envelope"></i> Unread
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2 class="admin-card-title">Recent Registrations</h2>
+                    <a href="registrations.html" class="btn btn-primary btn-sm">View All</a>
+                </div>
+                <div id="recentRegistrations">
+                    <div style="text-align: center; padding: 2rem; color: #64748b;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p>Loading recent registrations...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Contacts -->
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2 class="admin-card-title">Recent Contact Messages</h2>
+                    <a href="contacts.html" class="btn btn-primary btn-sm">View All</a>
+                </div>
+                <div id="recentContacts">
+                    <div style="text-align: center; padding: 2rem; color: #64748b;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p>Loading recent messages...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase-config.js"></script>
+    <script src="assets/js/admin-auth.js"></script>
+    <script src="assets/js/admin-dashboard.js"></script>
+</body>
+
+</html>
