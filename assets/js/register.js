@@ -285,8 +285,8 @@ class RegistrationForm {
     formatProgram(value) {
         const programs = {
             'junior-orators': 'Junior Orators (Ages 7-12)',
-            'global-scholars': 'Global Scholars (Ages 13-18)',
-            'executive': 'Executive Communicator (18+)'
+            'global-scholars': 'High School (Ages 13-18)',
+            'executive': 'University & Professional (18+)'
         };
         return programs[value] || value;
     }

@@ -182,9 +182,9 @@ class AdminDashboard {
     formatProgram(slug) {
         const programs = {
             'junior-orators': 'Junior Orators',
-            'global-scholars': 'Global Scholars',
-            'executive': 'Executive Communicator',
-            'executive-communicator': 'Executive Communicator'
+            'global-scholars': 'High School',
+            'executive': 'University & Professional',
+            'executive-communicator': 'University & Professional'
         };
         return programs[slug] || slug;
     }
