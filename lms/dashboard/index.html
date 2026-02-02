@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Dashboard - The Voices Of Future Rwanda LMS">
+    <title>Dashboard - The Voices Of Future Rwanda LMS</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../favicon-32x32.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/design-system.css">
+    <link rel="stylesheet" href="../assets/css/lms.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="lms-wrapper">
+        <!-- Sidebar -->
+        <aside class="lms-sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <img src="../assets/img/logo.png" alt="The Voices Of Future Rwanda">
+                <span class="sidebar-logo-text">Learning Platform</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="sidebar-nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="../courses/index.html" class="sidebar-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="../assessments/index.html" class="sidebar-nav-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Assessments</span>
+                </a>
+                <a href="progress.html" class="sidebar-nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>My Progress</span>
+                </a>
+                <a href="certificates.html" class="sidebar-nav-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+                <a href="profile.html" class="sidebar-nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div
+                style="position: absolute; bottom: 0; width: 100%; padding: var(--space-4); border-top: 1px solid var(--neutral-200);">
+                <button onclick="logout()" class="btn btn-outline" style="width: 100%; font-size: var(--font-sm);">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lms-main" id="mainContent">
+            <!-- Top Bar -->
+            <div class="lms-topbar">
+                <button id="sidebarToggle" class="btn btn-outline btn-sm" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div style="flex: 1;"></div>
+
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div style="display: flex; align-items: center; gap: var(--space-3);">
+                        <div style="text-align: right;">
+                            <div class="user-name"
+                                style="font-weight: var(--weight-semibold); font-size: var(--font-sm);"></div>
+                            <div class="user-email" style="font-size: var(--font-xs); color: var(--neutral-600);"></div>
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--weight-bold);">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="lms-content">
+                <div style="margin-bottom: var(--space-8);">
+                    <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-2);">
+                        Welcome back, <span class="user-name"></span>! 👋
+                    </h1>
+                    <p style="color: var(--neutral-600); font-size: var(--font-lg);">
+                        Continue your learning journey with Agaciro
+                    </p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value">3</div>
+                                <div class="stat-card-label">Active Courses</div>
+                            </div>
+                            <div class="stat-card-icon blue">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                        </div>
+                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                            65% average progress
+                        </p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value">12</div>
+                                <div class="stat-card-label">Completed Lessons</div>
+                            </div>
+                            <div class="stat-card-icon gold">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                            <span style="color: var(--success); font-weight: var(--weight-semibold);">+3</span> this
+                            week
+                        </p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value">8</div>
+                                <div class="stat-card-label">Assessments Passed</div>
+                            </div>
+                            <div class="stat-card-icon green">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                        </div>
+                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                            Average score: <span
+                                style="color: var(--success); font-weight: var(--weight-semibold);">87%</span>
+                        </p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value">24h</div>
+                                <div class="stat-card-label">Learning Time</div>
+                            </div>
+                            <div class="stat-card-icon blue">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                            <span style="color: var(--success); font-weight: var(--weight-semibold);">+5h</span> this
+                            week
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Continue Learning Section -->
+                <div style="margin-bottom: var(--space-8);">
+                    <h2 style="font-size: var(--font-2xl); margin-bottom: var(--space-6);">Continue Learning</h2>
+
+                    <div class="course-grid">
+                        <div class="course-card"
+                            onclick="window.location.href='../courses/leadership-communication.html'">
+                            <div class="course-card-image"
+                                style="background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-3xl);">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="course-card-body">
+                                <h3 class="course-card-title">Leadership & Communication</h3>
+                                <div class="course-card-meta">
+                                    <span class="course-card-meta-item">
+                                        <i class="fas fa-book"></i>
+                                        12 Modules
+                                    </span>
+                                    <span class="course-card-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        16 weeks
+                                    </span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill gold" style="width: 70%;"></div>
+                                </div>
+                                <p
+                                    style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                                    70% complete • Module 9 of 12
+                                </p>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-4);">
+                                    <span>Continue Course</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="course-card" onclick="window.location.href='../courses/debate-skills.html'">
+                            <div class="course-card-image"
+                                style="background: var(--gradient-agaciro); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-3xl);">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="course-card-body">
+                                <h3 class="course-card-title">Competitive Debate Skills</h3>
+                                <div class="course-card-meta">
+                                    <span class="course-card-meta-item">
+                                        <i class="fas fa-book"></i>
+                                        10 Modules
+                                    </span>
+                                    <span class="course-card-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        12 weeks
+                                    </span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill" style="width: 45%;"></div>
+                                </div>
+                                <p
+                                    style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                                    45% complete • Module 5 of 10
+                                </p>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-4);">
+                                    <span>Continue Course</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="course-card" onclick="window.location.href='../courses/agaciro-values.html'">
+                            <div class="course-card-image"
+                                style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--agaciro-deep-blue) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-3xl);">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="course-card-body">
+                                <h3 class="course-card-title">Agaciro & Rwandan Values</h3>
+                                <div class="course-card-meta">
+                                    <span class="course-card-meta-item">
+                                        <i class="fas fa-book"></i>
+                                        8 Modules
+                                    </span>
+                                    <span class="course-card-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        8 weeks
+                                    </span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill gold" style="width: 80%;"></div>
+                                </div>
+                                <p
+                                    style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                                    80% complete • Module 7 of 8
+                                </p>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: var(--space-4);">
+                                    <span>Continue Course</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Assessments -->
+                <div>
+                    <h2 style="font-size: var(--font-2xl); margin-bottom: var(--space-6);">Upcoming Assessments</h2>
+
+                    <div style="display: grid; gap: var(--space-4);">
+                        <div class="card">
+                            <div class="card-body"
+                                style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: rgba(0, 161, 222, 0.1); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); font-size: var(--font-xl);">
+                                            <i class="fas fa-clipboard-check"></i>
+                                        </div>
+                                        <div>
+                                            <h4 style="margin-bottom: var(--space-1);">Module 9 Assessment</h4>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Leadership & Communication</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="display: flex; gap: var(--space-4); font-size: var(--font-sm); color: var(--neutral-600);">
+                                        <span><i class="fas fa-calendar"></i> Due: Feb 5, 2026</span>
+                                        <span><i class="fas fa-clock"></i> 45 minutes</span>
+                                        <span><i class="fas fa-question-circle"></i> 20 questions</span>
+                                    </div>
+                                </div>
+                                <a href="../assessments/module-9.html" class="btn btn-gold">
+                                    <span>Start Assessment</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body"
+                                style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: rgba(201, 161, 71, 0.1); display: flex; align-items: center; justify-content: center; color: var(--agaciro-gold); font-size: var(--font-xl);">
+                                            <i class="fas fa-pen-fancy"></i>
+                                        </div>
+                                        <div>
+                                            <h4 style="margin-bottom: var(--space-1);">Essay: My Leadership Journey</h4>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Agaciro & Rwandan Values</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="display: flex; gap: var(--space-4); font-size: var(--font-sm); color: var(--neutral-600);">
+                                        <span><i class="fas fa-calendar"></i> Due: Feb 8, 2026</span>
+                                        <span><i class="fas fa-file-word"></i> 250 words max</span>
+                                    </div>
+                                </div>
+                                <a href="../assessments/essay-leadership.html" class="btn btn-outline">
+                                    <span>View Details</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>

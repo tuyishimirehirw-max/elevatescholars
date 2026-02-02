@@ -1,0 +1,501 @@
+/**
+ * The Voices Of Future Rwanda - LMS Platform Styles
+ * Additional styles specific to the learning management system
+ */
+
+@import url('design-system.css');
+
+/*--------------------------------------------------------------
+# LMS Layout
+--------------------------------------------------------------*/
+.lms-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: var(--neutral-50);
+}
+
+.lms-sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid var(--neutral-200);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform var(--transition-base);
+}
+
+.lms-sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+.lms-main {
+  flex: 1;
+  margin-left: 280px;
+  transition: margin-left var(--transition-base);
+}
+
+.lms-main.expanded {
+  margin-left: 0;
+}
+
+.lms-topbar {
+  background: white;
+  border-bottom: 1px solid var(--neutral-200);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.lms-content {
+  padding: var(--space-8);
+  max-width: 1400px;
+}
+
+/*--------------------------------------------------------------
+# Sidebar Navigation
+--------------------------------------------------------------*/
+.sidebar-logo {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--neutral-200);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sidebar-logo img {
+  height: 50px;
+  width: auto;
+}
+
+.sidebar-logo-text {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--agaciro-deep-blue);
+  line-height: 1.2;
+}
+
+.sidebar-nav {
+  padding: var(--space-4) 0;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav-item:hover {
+  background: var(--neutral-100);
+  color: var(--primary-blue);
+}
+
+.sidebar-nav-item.active {
+  background: rgba(0, 161, 222, 0.1);
+  color: var(--primary-blue);
+  border-left-color: var(--primary-blue);
+  font-weight: var(--weight-semibold);
+}
+
+.sidebar-nav-item i {
+  width: 20px;
+  font-size: var(--font-lg);
+}
+
+/*--------------------------------------------------------------
+# Dashboard Cards
+--------------------------------------------------------------*/
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.stat-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.stat-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-2xl);
+}
+
+.stat-card-icon.blue {
+  background: rgba(0, 161, 222, 0.1);
+  color: var(--primary-blue);
+}
+
+.stat-card-icon.gold {
+  background: rgba(201, 161, 71, 0.1);
+  color: var(--agaciro-gold);
+}
+
+.stat-card-icon.green {
+  background: rgba(32, 96, 61, 0.1);
+  color: var(--primary-green);
+}
+
+.stat-card-value {
+  font-size: var(--font-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-1);
+}
+
+.stat-card-label {
+  font-size: var(--font-sm);
+  color: var(--neutral-600);
+}
+
+/*--------------------------------------------------------------
+# Progress Bar
+--------------------------------------------------------------*/
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--neutral-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: var(--space-2) 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.progress-bar-fill.gold {
+  background: var(--gradient-agaciro);
+}
+
+/*--------------------------------------------------------------
+# Course Cards
+--------------------------------------------------------------*/
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+.course-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.course-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: var(--gradient-primary);
+}
+
+.course-card-body {
+  padding: var(--space-6);
+}
+
+.course-card-title {
+  font-size: var(--font-xl);
+  font-weight: var(--weight-bold);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-3);
+}
+
+.course-card-meta {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-sm);
+  color: var(--neutral-600);
+}
+
+.course-card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/*--------------------------------------------------------------
+# Video Player
+--------------------------------------------------------------*/
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background: var(--neutral-900);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*--------------------------------------------------------------
+# Assessment Styles
+--------------------------------------------------------------*/
+.question-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.question-number {
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--primary-blue);
+  text-transform: uppercase;
+}
+
+.question-type {
+  font-size: var(--font-xs);
+  padding: var(--space-1) var(--space-3);
+  background: var(--neutral-100);
+  border-radius: var(--radius-full);
+  color: var(--neutral-700);
+}
+
+.question-text {
+  font-size: var(--font-lg);
+  font-weight: var(--weight-medium);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-relaxed);
+}
+
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.answer-option {
+  display: flex;
+  align-items: center;
+  padding: var(--space-4);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.answer-option:hover {
+  border-color: var(--primary-blue);
+  background: rgba(0, 161, 222, 0.05);
+}
+
+.answer-option input[type="radio"] {
+  margin-right: var(--space-3);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.answer-option.selected {
+  border-color: var(--primary-blue);
+  background: rgba(0, 161, 222, 0.1);
+}
+
+.essay-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: var(--space-4);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: var(--font-base);
+  line-height: var(--leading-relaxed);
+  resize: vertical;
+  transition: border-color var(--transition-base);
+}
+
+.essay-textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.word-counter {
+  text-align: right;
+  margin-top: var(--space-2);
+  font-size: var(--font-sm);
+  color: var(--neutral-600);
+}
+
+.word-counter.warning {
+  color: var(--warning);
+}
+
+.word-counter.error {
+  color: var(--error);
+}
+
+/*--------------------------------------------------------------
+# Auth Pages
+--------------------------------------------------------------*/
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-hero);
+  padding: var(--space-8);
+}
+
+.auth-card {
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-2xl);
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.auth-logo img {
+  height: 80px;
+  margin: 0 auto var(--space-4);
+}
+
+.auth-title {
+  font-size: var(--font-2xl);
+  text-align: center;
+  margin-bottom: var(--space-2);
+  color: var(--neutral-900);
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-8);
+}
+
+.form-group {
+  margin-bottom: var(--space-6);
+}
+
+.form-label {
+  display: block;
+  font-weight: var(--weight-medium);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-2);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-4);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: var(--font-base);
+  transition: all var(--transition-base);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 161, 222, 0.1);
+}
+
+.form-error {
+  color: var(--error);
+  font-size: var(--font-sm);
+  margin-top: var(--space-2);
+}
+
+/*--------------------------------------------------------------
+# Mobile Responsive
+--------------------------------------------------------------*/
+@media (max-width: 992px) {
+  .lms-sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .lms-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .lms-main {
+    margin-left: 0;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .lms-content {
+    padding: var(--space-4);
+  }
+  
+  .auth-card {
+    padding: var(--space-6);
+  }
+}

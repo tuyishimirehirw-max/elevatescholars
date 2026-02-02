@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 9 Assessment - The Voices Of Future Rwanda LMS">
+    <title>Module 9 Assessment - The Voices Of Future Rwanda LMS</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../favicon-32x32.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/design-system.css">
+    <link rel="stylesheet" href="../assets/css/lms.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="lms-wrapper">
+        <!-- Sidebar -->
+        <aside class="lms-sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <img src="../assets/img/logo.png" alt="The Voices Of Future Rwanda">
+                <span class="sidebar-logo-text">Learning Platform</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../dashboard/index.html" class="sidebar-nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="../courses/index.html" class="sidebar-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="index.html" class="sidebar-nav-item active">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Assessments</span>
+                </a>
+                <a href="../dashboard/progress.html" class="sidebar-nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>My Progress</span>
+                </a>
+                <a href="../dashboard/certificates.html" class="sidebar-nav-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+                <a href="../dashboard/profile.html" class="sidebar-nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div
+                style="position: absolute; bottom: 0; width: 100%; padding: var(--space-4); border-top: 1px solid var(--neutral-200);">
+                <button onclick="logout()" class="btn btn-outline" style="width: 100%; font-size: var(--font-sm);">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lms-main" id="mainContent">
+            <!-- Top Bar -->
+            <div class="lms-topbar">
+                <button id="sidebarToggle" class="btn btn-outline btn-sm" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div style="flex: 1; display: flex; align-items: center; gap: var(--space-3);">
+                    <div style="font-size: var(--font-sm); color: var(--neutral-600);">
+                        <i class="fas fa-clock"></i> Time Remaining: <span id="timer"
+                            style="font-weight: var(--weight-bold); color: var(--primary-blue);">45:00</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <div style="display: flex; align-items: center; gap: var(--space-3);">
+                        <div style="text-align: right;">
+                            <div class="user-name"
+                                style="font-weight: var(--weight-semibold); font-size: var(--font-sm);"></div>
+                            <div class="user-email" style="font-size: var(--font-xs); color: var(--neutral-600);"></div>
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--weight-bold);">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assessment Content -->
+            <div class="lms-content">
+                <!-- Assessment Header -->
+                <div
+                    style="background: var(--gradient-primary); color: white; padding: var(--space-8); border-radius: var(--radius-2xl); margin-bottom: var(--space-8);">
+                    <div
+                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fas fa-clipboard-check"></i> Assessment
+                        </span>
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fas fa-clock"></i> 45 Minutes
+                        </span>
+                    </div>
+                    <h1 style="font-size: var(--font-3xl); color: white; margin-bottom: var(--space-3);">
+                        Module 9: Advanced Public Speaking Assessment
+                    </h1>
+                    <p style="font-size: var(--font-lg); color: rgba(255,255,255,0.9);">
+                        20 Questions • MCQ, True/False, and Essay
+                    </p>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div style="margin-bottom: var(--space-8);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+                        <span style="font-size: var(--font-sm); color: var(--neutral-600);">Question <span
+                                id="currentQuestion">1</span> of 20</span>
+                        <span style="font-size: var(--font-sm); color: var(--neutral-600);">Progress: <span
+                                id="progressPercent">5%</span></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill gold" id="progressBar" style="width: 5%;"></div>
+                    </div>
+                </div>
+
+                <!-- Questions Container -->
+                <div id="questionsContainer" style="max-width: 900px; margin: 0 auto;">
+
+                    <!-- Question 1 - MCQ -->
+                    <div class="question-card" id="question1" style="display: block;">
+                        <div class="question-header">
+                            <span class="question-number">Question 1</span>
+                            <span class="question-type">Multiple Choice</span>
+                        </div>
+                        <p class="question-text">
+                            What is the primary purpose of an opening statement in a presentation?
+                        </p>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="A">
+                                <span>A) To provide detailed statistics and data</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="B">
+                                <span>B) To capture attention and establish the presentation's direction</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="C">
+                                <span>C) To conclude the main arguments</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="D">
+                                <span>D) To introduce the speaker's background</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 - True/False -->
+                    <div class="question-card" id="question2" style="display: none;">
+                        <div class="question-header">
+                            <span class="question-number">Question 2</span>
+                            <span class="question-type">True / False</span>
+                        </div>
+                        <p class="question-text">
+                            Effective public speakers should maintain eye contact with their audience throughout the
+                            presentation.
+                        </p>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q2" value="true">
+                                <span>True</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q2" value="false">
+                                <span>False</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 - MCQ -->
+                    <div class="question-card" id="question3" style="display: none;">
+                        <div class="question-header">
+                            <span class="question-number">Question 3</span>
+                            <span class="question-type">Multiple Choice</span>
+                        </div>
+                        <p class="question-text">
+                            Which of the following is NOT a recommended technique for managing stage fright?
+                        </p>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="A">
+                                <span>A) Deep breathing exercises</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="B">
+                                <span>B) Avoiding eye contact with the audience</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="C">
+                                <span>C) Thorough preparation and practice</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="D">
+                                <span>D) Positive visualization</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 - Essay -->
+                    <div class="question-card" id="question4" style="display: none;">
+                        <div class="question-header">
+                            <span class="question-number">Question 4</span>
+                            <span class="question-type">Essay (250 words maximum)</span>
+                        </div>
+                        <p class="question-text">
+                            Describe how the concept of Agaciro (dignity and self-worth) can be incorporated into public
+                            speaking and leadership communication. Provide specific examples from your own experience or
+                            observations.
+                        </p>
+                        <textarea id="essay1" class="essay-textarea" placeholder="Type your essay here..."
+                            maxlength="2000"></textarea>
+                        <div class="word-counter" id="essayCounter1">0 / 250 words</div>
+                    </div>
+
+                    <!-- Question 5 - True/False -->
+                    <div class="question-card" id="question5" style="display: none;">
+                        <div class="question-header">
+                            <span class="question-number">Question 5</span>
+                            <span class="question-type">True / False</span>
+                        </div>
+                        <p class="question-text">
+                            Using personal stories and anecdotes in presentations can help create emotional connections
+                            with the audience.
+                        </p>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q5" value="true">
+                                <span>True</span>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q5" value="false">
+                                <span>False</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div
+                    style="max-width: 900px; margin: var(--space-8) auto 0; display: flex; justify-content: space-between; align-items: center;">
+                    <button id="prevBtn" class="btn btn-outline" onclick="previousQuestion()" disabled>
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Previous</span>
+                    </button>
+
+                    <div style="display: flex; gap: var(--space-2);">
+                        <button class="btn btn-outline btn-sm" onclick="saveProgress()">
+                            <i class="fas fa-save"></i>
+                            <span>Save Progress</span>
+                        </button>
+                    </div>
+
+                    <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">
+                        <span>Next</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <button id="submitBtn" class="btn btn-gold" onclick="submitAssessment()" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Submit Assessment</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/assessment.js"></script>
+</body>
+
+</html>

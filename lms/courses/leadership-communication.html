@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leadership & Communication Course - The Voices Of Future Rwanda LMS">
+    <title>Leadership & Communication - The Voices Of Future Rwanda LMS</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../favicon-32x32.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/design-system.css">
+    <link rel="stylesheet" href="../assets/css/lms.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="lms-wrapper">
+        <!-- Sidebar -->
+        <aside class="lms-sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <img src="../assets/img/logo.png" alt="The Voices Of Future Rwanda">
+                <span class="sidebar-logo-text">Learning Platform</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../dashboard/index.html" class="sidebar-nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="index.html" class="sidebar-nav-item active">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="../assessments/index.html" class="sidebar-nav-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Assessments</span>
+                </a>
+                <a href="../dashboard/progress.html" class="sidebar-nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>My Progress</span>
+                </a>
+                <a href="../dashboard/certificates.html" class="sidebar-nav-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+                <a href="../dashboard/profile.html" class="sidebar-nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div
+                style="position: absolute; bottom: 0; width: 100%; padding: var(--space-4); border-top: 1px solid var(--neutral-200);">
+                <button onclick="logout()" class="btn btn-outline" style="width: 100%; font-size: var(--font-sm);">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lms-main" id="mainContent">
+            <!-- Top Bar -->
+            <div class="lms-topbar">
+                <button id="sidebarToggle" class="btn btn-outline btn-sm" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div style="flex: 1;"></div>
+
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div style="display: flex; align-items: center; gap: var(--space-3);">
+                        <div style="text-align: right;">
+                            <div class="user-name"
+                                style="font-weight: var(--weight-semibold); font-size: var(--font-sm);"></div>
+                            <div class="user-email" style="font-size: var(--font-xs); color: var(--neutral-600);"></div>
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--weight-bold);">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Content -->
+            <div class="lms-content">
+                <!-- Course Header -->
+                <div
+                    style="background: var(--gradient-primary); color: white; padding: var(--space-12); border-radius: var(--radius-2xl); margin-bottom: var(--space-8);">
+                    <div
+                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fas fa-book"></i> Course
+                        </span>
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fas fa-clock"></i> 16 Weeks
+                        </span>
+                    </div>
+                    <h1 style="font-size: var(--font-4xl); color: white; margin-bottom: var(--space-4);">
+                        Leadership & Communication
+                    </h1>
+                    <p
+                        style="font-size: var(--font-lg); color: rgba(255,255,255,0.9); max-width: 800px; margin-bottom: var(--space-6);">
+                        Master the art of effective communication and leadership through competitive debate, public
+                        speaking, and Agaciro-centered values.
+                    </p>
+                    <div class="progress-bar" style="margin-bottom: var(--space-3);">
+                        <div class="progress-bar-fill gold" style="width: 70%;"></div>
+                    </div>
+                    <p style="font-size: var(--font-sm); color: rgba(255,255,255,0.9);">
+                        70% Complete • 9 of 12 modules completed
+                    </p>
+                </div>
+
+                <!-- Course Modules -->
+                <h2 style="font-size: var(--font-2xl); margin-bottom: var(--space-6);">Course Modules</h2>
+
+                <div style="display: grid; gap: var(--space-4);">
+                    <!-- Module 1 - Completed -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-4);">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: rgba(32, 96, 61, 0.1); display: flex; align-items: center; justify-content: center; color: var(--success); font-size: var(--font-xl);">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div>
+                                            <h3 style="margin-bottom: var(--space-1);">Module 1: Introduction to
+                                                Leadership</h3>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Understanding leadership principles and Agaciro</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-green">Completed</span>
+                            </div>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3); margin-top: var(--space-4);">
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-sm); color: var(--neutral-600);">
+                                    <i class="fas fa-video"></i>
+                                    <span>5 Video Lessons</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-sm); color: var(--neutral-600);">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    <span>1 Assessment</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-sm); color: var(--neutral-600);">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 9 - In Progress -->
+                    <div class="card" style="border: 2px solid var(--primary-blue);">
+                        <div class="card-body">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-4);">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: rgba(0, 161, 222, 0.1); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); font-size: var(--font-xl);">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div>
+                                        <div>
+                                            <h3 style="margin-bottom: var(--space-1);">Module 9: Advanced Public
+                                                Speaking</h3>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Mastering stage presence and audience engagement</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-blue">In Progress</span>
+                            </div>
+                            <div class="progress-bar" style="margin-bottom: var(--space-3);">
+                                <div class="progress-bar-fill" style="width: 60%;"></div>
+                            </div>
+                            <p
+                                style="font-size: var(--font-sm); color: var(--neutral-600); margin-bottom: var(--space-4);">
+                                60% Complete • 3 of 5 lessons completed
+                            </p>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-4);">
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-sm); color: var(--neutral-600);">
+                                    <i class="fas fa-video"></i>
+                                    <span>5 Video Lessons</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-sm); color: var(--neutral-600);">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    <span>1 Assessment</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-sm); color: var(--neutral-600);">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3 hours</span>
+                                </div>
+                            </div>
+                            <button onclick="window.location.href='lesson-9-4.html'" class="btn btn-primary">
+                                <span>Continue Learning</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Module 10 - Locked -->
+                    <div class="card" style="opacity: 0.6;">
+                        <div class="card-body">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-4);">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: var(--neutral-200); display: flex; align-items: center; justify-content: center; color: var(--neutral-600); font-size: var(--font-xl);">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                        <div>
+                                            <h3 style="margin-bottom: var(--space-1);">Module 10: Crisis Communication
+                                            </h3>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Handling difficult conversations and conflicts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge">Locked</span>
+                            </div>
+                            <p style="font-size: var(--font-sm); color: var(--neutral-600);">
+                                Complete Module 9 to unlock this module
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Module 11 - Locked -->
+                    <div class="card" style="opacity: 0.6;">
+                        <div class="card-body">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-4);">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: var(--neutral-200); display: flex; align-items: center; justify-content: center; color: var(--neutral-600); font-size: var(--font-xl);">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                        <div>
+                                            <h3 style="margin-bottom: var(--space-1);">Module 11: Team Leadership</h3>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Leading and motivating diverse teams</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 12 - Locked -->
+                    <div class="card" style="opacity: 0.6;">
+                        <div class="card-body">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-4);">
+                                <div style="flex: 1;">
+                                    <div
+                                        style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+                                        <div
+                                            style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: var(--neutral-200); display: flex; align-items: center; justify-content: center; color: var(--neutral-600); font-size: var(--font-xl);">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                        <div>
+                                            <h3 style="margin-bottom: var(--space-1);">Module 12: Final Project &
+                                                Certification</h3>
+                                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                Demonstrate your leadership and communication skills</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>

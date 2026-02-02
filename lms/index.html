@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to The Voices Of Future Rwanda Learning Platform">
+  <title>Login - The Voices Of Future Rwanda LMS</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon-32x32.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/design-system.css">
+  <link rel="stylesheet" href="assets/css/lms.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="auth-container">
+    <div class="auth-card animate-fade-in">
+      <div class="auth-logo">
+        <img src="assets/img/logo.png" alt="The Voices Of Future Rwanda">
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to continue your learning journey</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="email" class="form-label">
+            <i class="fas fa-envelope"></i> Email Address
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-input" 
+            placeholder="your.email@example.com"
+            required
+          >
+          <div class="form-error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">
+            <i class="fas fa-lock"></i> Password
+          </label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-input" 
+            placeholder="Enter your password"
+            required
+          >
+          <div class="form-error" id="passwordError"></div>
+        </div>
+
+        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+          <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+            <input type="checkbox" id="remember" name="remember">
+            <span style="font-size: var(--font-sm); color: var(--neutral-600);">Remember me</span>
+          </label>
+          <a href="#" style="font-size: var(--font-sm); color: var(--primary-blue);">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-4);">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Sign In</span>
+        </button>
+
+        <div class="form-error" id="formError" style="text-align: center; margin-top: var(--space-4);"></div>
+      </form>
+
+      <div style="text-align: center; margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--neutral-200);">
+        <p style="color: var(--neutral-600); font-size: var(--font-sm);">
+          Don't have an account? 
+          <a href="https://thevoicesoffuturerwanda.com/register.html" style="color: var(--primary-blue); font-weight: var(--weight-semibold);">
+            Enroll Now
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/auth.js"></script>
+</body>
+
+</html>
