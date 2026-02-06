@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Instructions - The Voices Of Future Rwanda</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+                <span class="logo-tagline">The Voices Of Future Rwanda</span>
+            </a>
+        </div>
+    </nav>
+
+    <main style="padding-top: var(--space-20); padding-bottom: var(--space-20); background: var(--neutral-50);">
+        <div class="container">
+            <div class="registration-container" style="max-width: 800px; margin: 0 auto;">
+                
+                <!-- Success Header -->
+                <div style="text-align: center; margin-bottom: var(--space-10);">
+                    <div style="width: 100px; height: 100px; background: var(--gradient-agaciro); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-6);">
+                        <i class="fas fa-check" style="font-size: 3rem; color: white;"></i>
+                    </div>
+                    <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-4);">Account Created Successfully!</h1>
+                    <p style="font-size: var(--font-lg); color: var(--neutral-600);">
+                        Please complete your payment to activate your enrollment
+                    </p>
+                </div>
+
+                <!-- Payment Information Card -->
+                <div class="card" style="margin-bottom: var(--space-8);">
+                    <div class="card-body" style="padding: var(--space-10);">
+                        
+                        <!-- Amount Display -->
+                        <div style="background: var(--gradient-agaciro); padding: var(--space-8); border-radius: var(--radius-xl); margin-bottom: var(--space-8); text-align: center;">
+                            <p style="color: white; margin-bottom: var(--space-2); font-size: var(--font-sm); opacity: 0.9;">Amount to Pay:</p>
+                            <h2 style="color: white; font-size: var(--font-4xl); margin: 0;">RWF 50,000</h2>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <h3 style="margin-bottom: var(--space-6); text-align: center;">Choose Your Payment Method</h3>
+
+                        <!-- MTN Mobile Money -->
+                        <div style="background: var(--neutral-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-6); border-left: 4px solid #FFCC00;">
+                            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                                <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: #FFCC00;"></i>
+                                <h4 style="margin: 0;">MTN Mobile Money</h4>
+                            </div>
+                            <p style="margin-bottom: var(--space-4);">Send to: <strong style="font-size: var(--font-xl); color: var(--agaciro-gold);">+250 736 483 410</strong></p>
+                            <ol style="margin: 0; padding-left: var(--space-6);">
+                                <li>Dial <strong>*182#</strong></li>
+                                <li>Select <strong>Send Money</strong></li>
+                                <li>Enter: <strong>0736483410</strong></li>
+                                <li>Amount: <strong>50000</strong></li>
+                                <li>Complete the transaction</li>
+                            </ol>
+                        </div>
+
+                        <!-- Airtel Money -->
+                        <div style="background: var(--neutral-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-8); border-left: 4px solid #ED1C24;">
+                            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                                <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: #ED1C24;"></i>
+                                <h4 style="margin: 0;">Airtel Money</h4>
+                            </div>
+                            <p style="margin-bottom: var(--space-4);">Send to: <strong style="font-size: var(--font-xl); color: var(--agaciro-gold);">+250 786 948 770</strong></p>
+                            <ol style="margin: 0; padding-left: var(--space-6);">
+                                <li>Dial <strong>*182#</strong></li>
+                                <li>Select <strong>Send Money</strong></li>
+                                <li>Enter: <strong>0786948770</strong></li>
+                                <li>Amount: <strong>50000</strong></li>
+                                <li>Complete the transaction</li>
+                            </ol>
+                        </div>
+
+                        <!-- Important Notice -->
+                        <div style="background: #FFF3CD; border: 2px solid #FFC107; padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-8);">
+                            <div style="display: flex; align-items: start; gap: var(--space-3);">
+                                <i class="fas fa-exclamation-triangle" style="color: #FF9800; font-size: 1.5rem; margin-top: 2px;"></i>
+                                <div>
+                                    <strong style="display: block; margin-bottom: var(--space-2);">⚠️ Important</strong>
+                                    <p style="margin: 0; font-size: var(--font-sm);">
+                                        After making payment, you MUST submit the transaction reference below to complete your registration. 
+                                        Check your SMS for the transaction ID after payment.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Submission Form -->
+                        <form id="paymentForm">
+                            <h3 style="margin-bottom: var(--space-6);">Submit Payment Proof</h3>
+
+                            <div class="form-group">
+                                <label for="paymentMethod">Payment Method Used *</label>
+                                <select id="paymentMethod" name="paymentMethod" required>
+                                    <option value="">-- Select Payment Method --</option>
+                                    <option value="MTN Mobile Money">MTN Mobile Money</option>
+                                    <option value="Airtel Money">Airtel Money</option>
+                                </select>
+                                <span class="error-message" id="paymentMethodError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="transactionRef">Transaction Reference/ID *</label>
+                                <input 
+                                    type="text" 
+                                    id="transactionRef" 
+                                    name="transactionRef" 
+                                    required
+                                    placeholder="e.g., MP240206.1234.A12345"
+                                    style="text-transform: uppercase;"
+                                >
+                                <small>Find this in your mobile money confirmation SMS</small>
+                                <span class="error-message" id="transactionRefError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="paymentAmount">Amount Paid (RWF) *</label>
+                                <input 
+                                    type="number" 
+                                    id="paymentAmount" 
+                                    name="paymentAmount" 
+                                    value="50000"
+                                    required
+                                    readonly
+                                    style="background: var(--neutral-100);"
+                                >
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitButton" style="width: 100%; margin-top: var(--space-6);">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Submit Payment Proof</span>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="card">
+                    <div class="card-body" style="padding: var(--space-8);">
+                        <h4 style="margin-bottom: var(--space-4);">Need Help?</h4>
+                        <p style="color: var(--neutral-600); margin-bottom: var(--space-4);">
+                            If you encounter any issues with payment, please contact us:
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+                            <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                <i class="fas fa-phone" style="color: var(--agaciro-gold);"></i>
+                                <span>+250 736 483 410</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                <i class="fas fa-phone" style="color: var(--agaciro-gold);"></i>
+                                <span>+250 786 948 770</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                <i class="fas fa-envelope" style="color: var(--agaciro-gold);"></i>
+                                <span>info@thevoicesoffuturerwanda.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <div class="spinner" style="width: 60px; height: 60px; border: 6px solid rgba(255,255,255,0.3); border-top: 6px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto var(--space-4);"></div>
+                <p style="font-size: var(--font-lg); margin: 0;">Submitting payment...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script type="module" src="assets/js/payment-submission.js"></script>
+</body>
+</html>

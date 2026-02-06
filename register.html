@@ -40,7 +40,6 @@
                 <li class="dropdown">
                     <a href="programs.html" class="dropdown-toggle">Programs</a>
                     <div class="dropdown-menu">
-                        <!---->
                         <a href="programs/high-school.html">High School</a>
                         <a href="programs/university.html">University & Professional</a>
                     </div>
@@ -85,31 +84,31 @@
 
                 <!-- Progress Indicator -->
                 <div class="registration-progress">
-                    <div class="progress-step active">
+                    <div class="progress-step active" data-step="1">
                         <div class="progress-step-number"><span>1</span></div>
                         <div class="progress-step-label">User Type</div>
                     </div>
-                    <div class="progress-step">
+                    <div class="progress-step" data-step="2">
                         <div class="progress-step-number"><span>2</span></div>
                         <div class="progress-step-label">Student Info</div>
                     </div>
-                    <div class="progress-step">
+                    <div class="progress-step" data-step="3">
                         <div class="progress-step-number"><span>3</span></div>
                         <div class="progress-step-label">Contact</div>
                     </div>
-                    <div class="progress-step">
+                    <div class="progress-step" data-step="4">
                         <div class="progress-step-number"><span>4</span></div>
                         <div class="progress-step-label">Program</div>
                     </div>
-                    <div class="progress-step">
+                    <div class="progress-step" data-step="5">
                         <div class="progress-step-number"><span>5</span></div>
+                        <div class="progress-step-label">Account</div>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="progress-step-number"><span>6</span></div>
                         <div class="progress-step-label">Goals</div>
                     </div>
-                    <div class="progress-step">
-                        <div class="progress-step-number"><span>6</span></div>
-                        <div class="progress-step-label">Payment</div>
-                    </div>
-                    <div class="progress-step">
+                    <div class="progress-step" data-step="7">
                         <div class="progress-step-number"><span>7</span></div>
                         <div class="progress-step-label">Review</div>
                     </div>
@@ -126,60 +125,25 @@
                                 <h3 style="margin-bottom: var(--space-6);">Who is enrolling?</h3>
 
                                 <div class="radio-group form-group">
-                                    <!-- <div class="radio-option">
-                                        <input type="radio" id="userParent" name="userType" value="parent" required>
-                                        <label for="userParent">
-                                            <div style="display: flex; align-items: center; gap: var(--space-3);">
-                                                <i class="fas fa-user-friends"
-                                                    style="font-size: 1.5rem; color: var(--primary-blue);"></i>
-                                                <div>
-                                                    <strong>I'm a Parent</strong>
-                                                    <p
-                                                        style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
-                                                        Enrolling my child in a program</p>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>-->
-
-                                    <!-- <div class="radio-option">
-                                        <input type="radio" id="userSchool" name="userType" value="school" required>
-                                        <label for="userSchool">
-                                            <div style="display: flex; align-items: center; gap: var(--space-3);">
-                                                <i class="fas fa-school"
-                                                    style="font-size: 1.5rem; color: var(--agaciro-gold);"></i>
-                                                <div>
-                                                    <strong>I'm a School Representative</strong>
-                                                    <p
-                                                        style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
-                                                        Interested in school partnership</p>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>-->
-
                                     <div class="radio-option">
-                                        <input type="radio" id="userIndividual" name="userType" value="individual"
-                                            required>
-                                        <label for="userIndividual">
+                                        <input type="radio" id="userStudent" name="userType" value="student" required checked>
+                                        <label for="userStudent">
                                             <div style="display: flex; align-items: center; gap: var(--space-3);">
                                                 <i class="fas fa-user-graduate"
-                                                    style="font-size: 1.5rem; color: var(--primary-green);"></i>
+                                                    style="font-size: 1.5rem; color: var(--primary-blue);"></i>
                                                 <div>
-                                                    <strong>I'm an Individual Student</strong>
-                                                    <p
-                                                        style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
-                                                        Enrolling myself (18+ or with parental consent)</p>
+                                                    <strong>I'm a Student</strong>
+                                                    <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                                        Enrolling myself in a program</p>
                                                 </div>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
 
-                                <div class="form-navigation">
-                                    <div></div>
-                                    <button type="button" class="btn btn-gold btn-next">
-                                        <span>Next</span>
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span>Continue</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
                                 </div>
@@ -189,73 +153,52 @@
                             <div class="form-step" data-step="2">
                                 <h3 style="margin-bottom: var(--space-6);">Student Information</h3>
 
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="firstName">First Name <span class="required">*</span></label>
-                                        <input type="text" id="firstName" name="firstName" required
-                                            placeholder="Enter first name">
-                                        <div class="error-message">Please enter the student's first name</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="lastName">Last Name <span class="required">*</span></label>
-                                        <input type="text" id="lastName" name="lastName" required
-                                            placeholder="Enter last name">
-                                        <div class="error-message">Please enter the student's last name</div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="studentName">Full Name *</label>
+                                    <input type="text" id="studentName" name="studentName" required 
+                                        placeholder="Enter full name as it appears on ID">
+                                    <span class="error-message" id="studentNameError"></span>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="dob">Date of Birth <span class="required">*</span></label>
-                                        <input type="date" id="dob" name="dob" required>
-                                        <div class="error-message">Please select a valid date of birth</div>
+                                        <label for="studentAge">Age *</label>
+                                        <input type="number" id="studentAge" name="studentAge" required min="10" max="100"
+                                            placeholder="Age">
+                                        <span class="error-message" id="studentAgeError"></span>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="gender">Gender <span class="required">*</span></label>
-                                        <select id="gender" name="gender" required>
+                                        <label for="studentGender">Gender *</label>
+                                        <select id="studentGender" name="studentGender" required>
                                             <option value="">Select gender</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
-                                            <option value="other">Prefer not to say</option>
+                                            <option value="other">Other</option>
                                         </select>
-                                        <div class="error-message">Please select gender</div>
+                                        <span class="error-message" id="studentGenderError"></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="school">School/Institution <span class="required">*</span></label>
-                                    <input type="text" id="school" name="school" required
-                                        placeholder="Enter current school">
-                                    <div class="error-message">Please enter the student's school</div>
-                                    <p class="help-text">Enter the name of the current school or institution</p>
+                                    <label for="dateOfBirth">Date of Birth</label>
+                                    <input type="date" id="dateOfBirth" name="dateOfBirth" max="2024-12-31">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="gradeLevel">Current Grade/Level <span class="required">*</span></label>
-                                    <select id="gradeLevel" name="gradeLevel" required>
-                                        <option value="">Select grade level</option>
-
-                                        <option value="s1">Secondary 1</option>
-                                        <option value="s2">Secondary 2</option>
-                                        <option value="s3">Secondary 3</option>
-                                        <option value="s4">Secondary 4</option>
-                                        <option value="s5">Secondary 5</option>
-                                        <option value="s6">Secondary 6</option>
-                                        <option value="university">University</option>
-                                        <option value="professional">Professional</option>
-                                    </select>
-                                    <div class="error-message">Please select grade level</div>
+                                    <label for="schoolName">School/University Name *</label>
+                                    <input type="text" id="schoolName" name="schoolName" required
+                                        placeholder="Name of current school or university">
+                                    <span class="error-message" id="schoolNameError"></span>
                                 </div>
 
-                                <div class="form-navigation">
-                                    <button type="button" class="btn btn-outline btn-previous">
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-outline" onclick="previousStep()">
                                         <i class="fas fa-arrow-left"></i>
-                                        <span>Previous</span>
+                                        <span>Back</span>
                                     </button>
-                                    <button type="button" class="btn btn-gold btn-next">
-                                        <span>Next</span>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span>Continue</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
                                 </div>
@@ -266,90 +209,56 @@
                                 <h3 style="margin-bottom: var(--space-6);">Contact Information</h3>
 
                                 <div class="form-group">
-                                    <label for="email">Email Address <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" required
-                                        placeholder="your.email@example.com">
-                                    <div class="error-message">Please enter a valid email address</div>
+                                    <label for="studentPhone">Student Phone Number *</label>
+                                    <input type="tel" id="studentPhone" name="studentPhone" required
+                                        placeholder="+250 7XX XXX XXX" pattern="^\+?250[0-9]{9}$">
+                                    <small>Format: +250 7XX XXX XXX</small>
+                                    <span class="error-message" id="studentPhoneError"></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone">Phone Number <span class="required">*</span></label>
-                                    <input type="tel" id="phone" name="phone" required placeholder="+250 7XX XXX XXX">
-                                    <div class="error-message">Please enter a valid Rwanda phone number</div>
-                                    <p class="help-text">Format: +250 7XX XXX XXX</p>
+                                    <label for="studentEmail">Student Email Address *</label>
+                                    <input type="email" id="studentEmail" name="studentEmail" required
+                                        placeholder="student@example.com">
+                                    <small>You'll use this email to log into your learning portal</small>
+                                    <span class="error-message" id="studentEmailError"></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="whatsapp">WhatsApp Number <span class="required">*</span></label>
-                                    <input type="tel" id="whatsapp" name="whatsapp" required
+                                    <label for="address">Residential Address</label>
+                                    <textarea id="address" name="address" rows="3"
+                                        placeholder="District, Sector, Cell"></textarea>
+                                </div>
+
+                                <div class="form-divider" style="margin: var(--space-8) 0;">
+                                    <span>Guardian/Parent Information (Optional)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="guardianName">Guardian/Parent Name</label>
+                                    <input type="text" id="guardianName" name="guardianName"
+                                        placeholder="For students under 18">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="guardianPhone">Guardian/Parent Phone</label>
+                                    <input type="tel" id="guardianPhone" name="guardianPhone"
                                         placeholder="+250 7XX XXX XXX">
-                                    <div class="error-message">Please enter a valid WhatsApp number</div>
-                                    <p class="help-text">We'll use this for program updates and communications</p>
                                 </div>
 
-                                <!-- Conditional Parent Fields -->
-                                <div id="parentFields"
-                                    style="display: none; margin-top: var(--space-8); padding-top: var(--space-8); border-top: 2px solid var(--neutral-200);">
-                                    <h4 style="margin-bottom: var(--space-6);">Parent/Guardian Information</h4>
-
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="parentName">Parent/Guardian Name</label>
-                                            <input type="text" id="parentName" name="parentName"
-                                                placeholder="Full name">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="parentEmail">Parent Email</label>
-                                            <input type="email" id="parentEmail" name="parentEmail"
-                                                placeholder="parent@example.com">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="parentPhone">Parent Phone</label>
-                                        <input type="tel" id="parentPhone" name="parentPhone"
-                                            placeholder="+250 7XX XXX XXX">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="guardianEmail">Guardian/Parent Email</label>
+                                    <input type="email" id="guardianEmail" name="guardianEmail"
+                                        placeholder="guardian@example.com">
                                 </div>
 
-                                <!-- Conditional School Fields -->
-                                <div id="schoolFields"
-                                    style="display: none; margin-top: var(--space-8); padding-top: var(--space-8); border-top: 2px solid var(--neutral-200);">
-                                    <h4 style="margin-bottom: var(--space-6);">School Partnership Information</h4>
-
-                                    <div class="form-group">
-                                        <label for="schoolName">School Name</label>
-                                        <input type="text" id="schoolName" name="schoolName"
-                                            placeholder="Full school name">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="schoolSize">Estimated Number of Students</label>
-                                        <select id="schoolSize" name="schoolSize">
-                                            <option value="">Select size</option>
-                                            <option value="1-50">1-50 students</option>
-                                            <option value="51-100">51-100 students</option>
-                                            <option value="101-200">101-200 students</option>
-                                            <option value="201-500">201-500 students</option>
-                                            <option value="500+">500+ students</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="schoolRole">Your Role at School</label>
-                                        <input type="text" id="schoolRole" name="schoolRole"
-                                            placeholder="e.g., Principal, Teacher, Administrator">
-                                    </div>
-                                </div>
-
-                                <div class="form-navigation">
-                                    <button type="button" class="btn btn-outline btn-previous">
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-outline" onclick="previousStep()">
                                         <i class="fas fa-arrow-left"></i>
-                                        <span>Previous</span>
+                                        <span>Back</span>
                                     </button>
-                                    <button type="button" class="btn btn-gold btn-next">
-                                        <span>Next</span>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span>Continue</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
                                 </div>
@@ -360,188 +269,186 @@
                                 <h3 style="margin-bottom: var(--space-6);">Select Your Program</h3>
 
                                 <div class="radio-group form-group">
-                                    <!--  <div class="radio-option">
-                                        <input type="radio" id="programJunior" name="program" value="junior-orators"
-                                            required>
-                                        <label for="programJunior">
-                                            <div>
-                                                <strong style="color: var(--primary-blue);">Junior Orators Academy (Ages
-                                                    7-12)</strong>
-                                                <p
-                                                    style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-2) 0 0 0;">
-                                                    12 weeks | 20,000-50,000 RWF/month | Building unstoppable confidence
-                                                </p>
-                                            </div>
-                                        </label>
-                                    </div>-->
-
                                     <div class="radio-option">
-                                        <input type="radio" id="programGlobal" name="program" value="global-scholars"
-                                            required>
-                                        <label for="programGlobal">
+                                        <input type="radio" id="programHighSchool" name="program" value="High School" required>
+                                        <label for="programHighSchool">
                                             <div>
-                                                <strong style="color: var(--agaciro-gold);">High School Program
-                                                    (Ages 13-18)</strong>
-                                                <p
-                                                    style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-2) 0 0 0;">
-                                                    16 weeks | School partnership | Competitive debate & university prep
+                                                <strong>High School Program</strong>
+                                                <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-2) 0 0 0;">
+                                                    Advanced public speaking, debate, and leadership development for secondary school students
                                                 </p>
+                                                <div style="margin-top: var(--space-2);">
+                                                    <span class="badge badge-gold" style="font-size: var(--font-xs);">
+                                                        <i class="fas fa-users"></i>
+                                                        Ages 14-18
+                                                    </span>
+                                                </div>
                                             </div>
                                         </label>
                                     </div>
 
                                     <div class="radio-option">
-                                        <input type="radio" id="programExecutive" name="program" value="executive"
-                                            required>
-                                        <label for="programExecutive">
+                                        <input type="radio" id="programUniversity" name="program" value="University & Professional" required>
+                                        <label for="programUniversity">
                                             <div>
-                                                <strong style="color: var(--neutral-800);">University & Professional
-                                                    (18+)</strong>
-                                                <p
-                                                    style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-2) 0 0 0;">
-                                                    8 weeks intensive | Custom pricing | Professional leadership</p>
+                                                <strong>University & Professional Program</strong>
+                                                <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-2) 0 0 0;">
+                                                    Professional communication, policy debate, and career-focused leadership training
+                                                </p>
+                                                <div style="margin-top: var(--space-2);">
+                                                    <span class="badge badge-gold" style="font-size: var(--font-xs);">
+                                                        <i class="fas fa-graduation-cap"></i>
+                                                        Ages 18+
+                                                    </span>
+                                                </div>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
 
-                                <div class="alert alert-info" style="margin-top: var(--space-8);">
-                                    <i class="fas fa-info-circle"></i>
-                                    <div>
-                                        <strong>Not sure which program?</strong> Our team will help you choose the best
-                                        fit based on age and goals.
-                                    </div>
-                                </div>
-
-                                <div class="form-navigation">
-                                    <button type="button" class="btn btn-outline btn-previous">
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-outline" onclick="previousStep()">
                                         <i class="fas fa-arrow-left"></i>
-                                        <span>Previous</span>
+                                        <span>Back</span>
                                     </button>
-                                    <button type="button" class="btn btn-gold btn-next">
-                                        <span>Next</span>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span>Continue</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Step 5: Goals & Experience -->
+                            <!-- Step 5: Account Creation (NEW) -->
                             <div class="form-step" data-step="5">
-                                <h3 style="margin-bottom: var(--space-6);">Goals & Experience</h3>
+                                <h3 style="margin-bottom: var(--space-6);">Create Your Account</h3>
+                                <p style="color: var(--neutral-600); margin-bottom: var(--space-6);">
+                                    Create a secure password to access your learning portal and track your progress.
+                                </p>
 
                                 <div class="form-group">
-                                    <label for="goals">What are your goals for this program? <span
-                                            class="required">*</span></label>
-                                    <textarea id="goals" name="goals" rows="4" required
-                                        placeholder="Tell us what you hope to achieve..."></textarea>
-                                    <div class="error-message">Please share your goals</div>
-                                    <p class="help-text">Be specific about what you want to gain from the program</p>
+                                    <label for="password">Create Password *</label>
+                                    <div style="position: relative;">
+                                        <input type="password" id="password" name="password" required minlength="8"
+                                            placeholder="Minimum 8 characters">
+                                        <button type="button" class="password-toggle" onclick="togglePassword('password')"
+                                            style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--neutral-500);">
+                                            <i class="fas fa-eye" id="password-toggle-icon"></i>
+                                        </button>
+                                    </div>
+                                    <small>At least 8 characters with letters and numbers recommended</small>
+                                    <span class="error-message" id="passwordError"></span>
+                                    
+                                    <!-- Password Strength Indicator -->
+                                    <div class="password-strength" id="passwordStrength" style="margin-top: var(--space-3); display: none;">
+                                        <div style="height: 6px; background: var(--neutral-200); border-radius: 3px; overflow: hidden; margin-bottom: var(--space-2);">
+                                            <div id="strengthBar" style="height: 100%; width: 0%; transition: all 0.3s;"></div>
+                                        </div>
+                                        <span id="strengthText" style="font-size: var(--font-sm);"></span>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="experience">Previous debate or public speaking experience?</label>
-                                    <textarea id="experience" name="experience" rows="4"
-                                        placeholder="Describe any previous experience..."></textarea>
-                                    <p class="help-text">It's okay if you have no experience! We teach from the ground
-                                        up.</p>
+                                    <label for="confirmPassword">Confirm Password *</label>
+                                    <div style="position: relative;">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8"
+                                            placeholder="Re-enter your password">
+                                        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')"
+                                            style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--neutral-500);">
+                                            <i class="fas fa-eye" id="confirmPassword-toggle-icon"></i>
+                                        </button>
+                                    </div>
+                                    <span class="error-message" id="confirmPasswordError"></span>
+                                </div>
+
+                                <div style="background: var(--neutral-100); padding: var(--space-4); border-radius: var(--radius-lg); margin-top: var(--space-6);">
+                                    <div style="display: flex; align-items: start; gap: var(--space-3);">
+                                        <i class="fas fa-info-circle" style="color: var(--primary-blue); margin-top: 2px;"></i>
+                                        <div style="font-size: var(--font-sm); color: var(--neutral-700);">
+                                            <strong>Account Security</strong>
+                                            <p style="margin: var(--space-1) 0 0 0;">Your password will be encrypted and securely stored. You'll use this to access your courses and track your learning progress.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-outline" onclick="previousStep()">
+                                        <i class="fas fa-arrow-left"></i>
+                                        <span>Back</span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span>Continue</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Goals & Expectations -->
+                            <div class="form-step" data-step="6">
+                                <h3 style="margin-bottom: var(--space-6);">Your Goals & Expectations</h3>
+
+                                <div class="form-group">
+                                    <label>What do you hope to achieve? (Select all that apply)</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="goals" value="public-speaking">
+                                            <span>Improve public speaking skills</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="goals" value="leadership">
+                                            <span>Develop leadership abilities</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="goals" value="debate">
+                                            <span>Learn debate and argumentation</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="goals" value="confidence">
+                                            <span>Build self-confidence</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="goals" value="career">
+                                            <span>Prepare for future career</span>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="howHeard">How did you hear about The Voices Of Future Rwanda?</label>
-                                    <select id="howHeard" name="howHeard">
+                                    <label for="experience">Previous Public Speaking or Leadership Experience</label>
+                                    <select id="experience" name="experience">
+                                        <option value="">Select your experience level</option>
+                                        <option value="none">No experience</option>
+                                        <option value="beginner">Beginner (some school activities)</option>
+                                        <option value="intermediate">Intermediate (active in clubs/competitions)</option>
+                                        <option value="advanced">Advanced (leadership positions/competitions)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="hearAbout">How did you hear about us?</label>
+                                    <select id="hearAbout" name="hearAbout">
                                         <option value="">Select one</option>
                                         <option value="social-media">Social Media</option>
                                         <option value="friend">Friend or Family</option>
-                                        <option value="school">Through School</option>
-                                        <option value="web-search">Web Search</option>
+                                        <option value="school">School/University</option>
                                         <option value="event">Event or Workshop</option>
+                                        <option value="website">Website/Search</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
 
-                                <div class="form-navigation">
-                                    <button type="button" class="btn btn-outline btn-previous">
+                                <div class="form-group">
+                                    <label for="additionalInfo">Additional Information or Questions (Optional)</label>
+                                    <textarea id="additionalInfo" name="additionalInfo" rows="4"
+                                        placeholder="Share any other relevant information, special needs, or questions you have"></textarea>
+                                </div>
+
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-outline" onclick="previousStep()">
                                         <i class="fas fa-arrow-left"></i>
-                                        <span>Previous</span>
+                                        <span>Back</span>
                                     </button>
-                                    <button type="button" class="btn btn-gold btn-next">
-                                        <span>Next</span>
-                                        <i class="fas fa-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Step 6: Payment Method -->
-                            <div class="form-step" data-step="6">
-                                <h3 style="margin-bottom: var(--space-6);">Payment Method</h3>
-
-                                <div class="alert alert-warning">
-                                    <i class="fas fa-info-circle"></i>
-                                    <div>
-                                        <strong>Note:</strong> Payment integration is currently in setup. You will
-                                        receive payment instructions via email after registration.
-                                    </div>
-                                </div>
-
-                                <p style="margin-bottom: var(--space-6); color: var(--neutral-700);">Select your
-                                    preferred payment method:</p>
-
-                                <div class="payment-methods">
-                                    <div class="payment-method">
-                                        <input type="radio" id="paymentMTN" name="paymentMethod" value="mtn-momo"
-                                            required>
-                                        <label for="paymentMTN">
-                                            <i class="fab fa-cc-amazon-pay"></i>
-                                            <h5>MTN MoMo</h5>
-                                            <p>Mobile Money</p>
-                                        </label>
-                                        <a href="tel:*182*1*1*0786948770#"
-                                            style="display: block; margin-top: var(--space-3); text-align: center; color: var(--primary-blue); text-decoration: none; font-weight: 500;">
-                                            <i class="fas fa-phone"></i> Pay with MTN MoMo
-                                        </a>
-                                    </div>
-
-                                    <div class="payment-method">
-                                        <input type="radio" id="paymentAirtel" name="paymentMethod" value="airtel-money"
-                                            required>
-                                        <label for="paymentAirtel">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <h5>Airtel Money</h5>
-                                            <p>Mobile Money</p>
-                                        </label>
-                                        <a href="tel:*182*1*1*0736483410#"
-                                            style="display: block; margin-top: var(--space-3); text-align: center; color: var(--agaciro-gold); text-decoration: none; font-weight: 500;">
-                                            <i class="fas fa-phone"></i> Pay with Airtel Money
-                                        </a>
-                                    </div>
-                                    <!--Bank payment
-                                    <div class="payment-method">
-                                        <input type="radio" id="paymentBank" name="paymentMethod" value="bank-transfer"
-                                            required>
-                                        <label for="paymentBank">
-                                            <i class="fas fa-university"></i>
-                                            <h5>Bank Transfer</h5>
-                                            <p>Direct transfer</p>
-                                        </label>
-                                    </div>-->
-                                    <!--
-                                    <div class="payment-method">
-                                        <input type="radio" id="paymentCard" name="paymentMethod" value="card" required>
-                                        <label for="paymentCard">
-                                            <i class="fas fa-credit-card"></i>
-                                            <h5>Card Payment</h5>
-                                            <p>Credit/Debit</p>
-                                        </label>
-                                    </div>-->
-                                </div>
-
-                                <div class="form-navigation">
-                                    <button type="button" class="btn btn-outline btn-previous">
-                                        <i class="fas fa-arrow-left"></i>
-                                        <span>Previous</span>
-                                    </button>
-                                    <button type="button" class="btn btn-gold btn-next">
-                                        <span>Next</span>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span>Review & Submit</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </button>
                                 </div>
@@ -550,77 +457,42 @@
                             <!-- Step 7: Review & Submit -->
                             <div class="form-step" data-step="7">
                                 <h3 style="margin-bottom: var(--space-6);">Review Your Registration</h3>
+                                <p style="color: var(--neutral-600); margin-bottom: var(--space-8);">
+                                    Please review your information before submitting. You can go back to make changes.
+                                </p>
 
-                                <div class="registration-summary">
-                                    <h4>Registration Summary</h4>
-
-                                    <div class="summary-item">
-                                        <span class="summary-label">Registration Type:</span>
-                                        <span class="summary-value" id="summaryUserType">-</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <span class="summary-label">Student Name:</span>
-                                        <span class="summary-value" id="summaryStudentName">-</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <span class="summary-label">Program:</span>
-                                        <span class="summary-value" id="summaryProgram">-</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <span class="summary-label">Email:</span>
-                                        <span class="summary-value" id="summaryEmail">-</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <span class="summary-label">Phone:</span>
-                                        <span class="summary-value" id="summaryPhone">-</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <span class="summary-label">Payment Method:</span>
-                                        <span class="summary-value" id="summaryPayment">-</span>
-                                    </div>
+                                <div id="reviewSummary" style="background: var(--neutral-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-8);">
+                                    <!-- Summary will be populated by JavaScript -->
                                 </div>
 
-                                <!-- Terms & Conditions -->
-                                <div class="terms-box">
-                                    <h5>Terms and Conditions</h5>
-                                    <p>By enrolling in The Voices Of Future Rwanda, you agree to the following:</p>
-                                    <p><strong>1. Program Commitment:</strong> Students are expected to attend all
-                                        scheduled sessions and complete assigned work.</p>
-                                    <p><strong>2. Payment Terms:</strong> Program fees are due as outlined in your
-                                        enrollment confirmation. Refunds are available within the first 2 weeks of the
-                                        program.</p>
-                                    <p><strong>3. Code of Conduct:</strong> All scholars must maintain respectful
-                                        behavior and uphold the values of Agaciro (dignity).</p>
-                                    <p><strong>4. Photography & Media:</strong> We may photograph or record sessions for
-                                        promotional and educational purposes. Please inform us if you do not consent.
-                                    </p>
-                                    <p><strong>5. Data Privacy:</strong> Your information will be used solely for
-                                        program administration and will not be shared with third parties without
-                                        consent.</p>
+                                <div style="background: var(--gradient-agaciro); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+                                    <div style="display: flex; align-items: center; gap: var(--space-4); color: white;">
+                                        <i class="fas fa-money-bill-wave" style="font-size: 2rem;"></i>
+                                        <div>
+                                            <h4 style="margin: 0; color: white;">Registration Fee</h4>
+                                            <p style="font-size: var(--font-2xl); font-weight: bold; margin: var(--space-2) 0 0 0;">RWF 50,000</p>
+                                            <p style="font-size: var(--font-sm); margin: var(--space-1) 0 0 0; opacity: 0.9;">Payment instructions will be sent after registration</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="checkbox-option">
-                                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                                        <label for="agreeTerms">
-                                            I have read and agree to the terms and conditions <span
-                                                class="required">*</span>
-                                        </label>
-                                    </div>
+                                    <label class="checkbox-label" style="align-items: flex-start;">
+                                        <input type="checkbox" id="termsAccepted" required>
+                                        <span style="line-height: 1.6;">
+                                            I agree to the <a href="terms.html" target="_blank" style="color: var(--agaciro-gold); text-decoration: underline;">Terms & Conditions</a> and confirm that the information provided is accurate.
+                                        </span>
+                                    </label>
+                                    <span class="error-message" id="termsError"></span>
                                 </div>
 
-                                <div class="form-navigation">
-                                    <button type="button" class="btn btn-outline btn-previous">
+                                <div class="form-navigation" style="margin-top: var(--space-8);">
+                                    <button type="button" class="btn btn-outline" onclick="previousStep()">
                                         <i class="fas fa-arrow-left"></i>
-                                        <span>Previous</span>
+                                        <span>Back</span>
                                     </button>
-                                    <button type="submit" class="btn btn-gold btn-submit">
-                                        <i class="fas fa-check"></i>
+                                    <button type="submit" class="btn btn-primary" id="submitButton">
+                                        <i class="fas fa-check-circle"></i>
                                         <span>Complete Registration</span>
                                     </button>
                                 </div>
@@ -630,77 +502,17 @@
 
                     </div>
                 </div>
-
             </div>
 
-            <!-- Success Page (Hidden Initially) -->
-            <div id="successPage" style="display: none;">
-                <div class="card" style="max-width: 700px; margin: 0 auto; text-align: center;">
-                    <div class="card-body" style="padding: var(--space-12);">
-                        <div
-                            style="width: 100px; height: 100px; background: var(--gradient-agaciro); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-8);">
-                            <i class="fas fa-check" style="font-size: 3rem; color: white;"></i>
-                        </div>
+        </div>
 
-                        <h2 style="margin-bottom: var(--space-6);">Registration Successful!</h2>
-
-                        <p style="font-size: var(--font-lg); color: var(--neutral-700); margin-bottom: var(--space-8);">
-                            Thank you for enrolling in The Voices Of Future Rwanda. We've sent a confirmation email with
-                            next steps and payment instructions.
-                        </p>
-
-                        <div
-                            style="background: var(--neutral-100); padding: var(--space-8); border-radius: var(--radius-xl); margin-bottom: var(--space-10); text-align: left;">
-                            <h4 style="margin-bottom: var(--space-4);">What happens next?</h4>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
-                                <li
-                                    style="padding: var(--space-3) 0; display: flex; align-items: flex-start; gap: var(--space-3); border-bottom: 1px solid var(--neutral-200);">
-                                    <i class="fas fa-envelope" style="color: var(--agaciro-gold); margin-top: 4px;"></i>
-                                    <div>
-                                        <strong>Check Your Email</strong>
-                                        <p
-                                            style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-1) 0 0 0;">
-                                            We've sent confirmation and payment instructions</p>
-                                    </div>
-                                </li>
-                                <li
-                                    style="padding: var(--space-3) 0; display: flex; align-items: flex-start; gap: var(--space-3); border-bottom: 1px solid var(--neutral-200);">
-                                    <i class="fas fa-credit-card"
-                                        style="color: var(--agaciro-gold); margin-top: 4px;"></i>
-                                    <div>
-                                        <strong>Complete Payment</strong>
-                                        <p
-                                            style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-1) 0 0 0;">
-                                            Follow the instructions to secure your spot</p>
-                                    </div>
-                                </li>
-                                <li
-                                    style="padding: var(--space-3) 0; display: flex; align-items: flex-start; gap: var(--space-3);">
-                                    <i class="fas fa-phone" style="color: var(--agaciro-gold); margin-top: 4px;"></i>
-                                    <div>
-                                        <strong>We'll Contact You</strong>
-                                        <p
-                                            style="font-size: var(--font-sm); color: var(--neutral-600); margin: var(--space-1) 0 0 0;">
-                                            Our team will reach out within 24 hours</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                            <a href="index.html" class="btn btn-outline">
-                                <i class="fas fa-home"></i>
-                                <span>Back to Home</span>
-                            </a>
-                            <a href="programs.html" class="btn btn-primary">
-                                <i class="fas fa-book"></i>
-                                <span>View Programs</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <div class="spinner" style="width: 60px; height: 60px; border: 6px solid rgba(255,255,255,0.3); border-top: 6px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto var(--space-4);"></div>
+                <p style="font-size: var(--font-lg); margin: 0;">Creating your account...</p>
+                <p style="font-size: var(--font-sm); margin: var(--space-2) 0 0 0; opacity: 0.8;">Please wait, this may take a few moments</p>
             </div>
-
         </div>
 
     </main>
@@ -728,7 +540,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="programs.html">Programs</a></li>
                         <li><a href="scholars/index.html">Scholar Portfolios</a></li>
-                        <li><a href="student/login.html">Student Portal</a></li>
+                        <li><a href="login.html">Student Portal</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -736,7 +548,6 @@
                 <div class="footer-section">
                     <h4>Programs</h4>
                     <ul class="footer-links">
-                        <!---->
                         <li><a href="programs/high-school.html">High School</a></li>
                         <li><a href="programs/university.html">University & Professional</a></li>
                     </ul>
@@ -750,7 +561,7 @@
                     </p>
                     <p>
                         <i class="fas fa-envelope"></i>
-                        <span>info@voicesoffuturerwanda.rw</span>
+                        <span>info@thevoicesoffuturerwanda.com</span>
                     </p>
                     <p>
                         <i class="fas fa-phone"></i>
@@ -779,12 +590,17 @@
         </div>
     </footer>
 
+    <!-- CSS for spinner animation -->
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/register.js"></script>
-    <!-- Add BEFORE closing </body> tag -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="assets/js/supabase-config.js"></script>
+    <script type="module" src="assets/js/registration.js"></script>
 </body>
 
 </html>

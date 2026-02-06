@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Submitted - The Voices Of Future Rwanda</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+                <span class="logo-tagline">The Voices Of Future Rwanda</span>
+            </a>
+        </div>
+    </nav>
+
+    <main style="padding-top: var(--space-20); padding-bottom: var(--space-20); background: var(--neutral-50);">
+        <div class="container">
+            <div class="registration-container" style="max-width: 700px; margin: 0 auto;">
+                
+                <div class="card">
+                    <div class="card-body" style="padding: var(--space-12); text-align: center;">
+                        
+                        <!-- Success Icon -->
+                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-8);">
+                            <i class="fas fa-clock" style="font-size: 3rem; color: white;"></i>
+                        </div>
+
+                        <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-4);">Payment Submitted!</h1>
+                        <p style="font-size: var(--font-lg); color: var(--neutral-600); margin-bottom: var(--space-8);">
+                            Your registration is almost complete
+                        </p>
+
+                        <!-- Student Info Display -->
+                        <div style="background: var(--neutral-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-8); text-align: left;">
+                            <h3 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);">
+                                <i class="fas fa-user-check" style="color: var(--agaciro-gold);"></i>
+                                Registration Details
+                            </h3>
+                            <div style="display: grid; gap: var(--space-3); font-size: var(--font-sm);">
+                                <p><strong>Name:</strong> <span id="studentName"></span></p>
+                                <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                                <p><strong>Status:</strong> <span class="badge" style="background: #FFC107; color: white; padding: 4px 12px; border-radius: 12px; font-size: var(--font-xs);">Payment Pending Verification</span></p>
+                            </div>
+                        </div>
+
+                        <!-- What Happens Next -->
+                        <div style="background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%); padding: var(--space-8); border-radius: var(--radius-lg); margin-bottom: var(--space-8); text-align: left; border-left: 4px solid var(--primary-blue);">
+                            <h3 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);">
+                                <i class="fas fa-tasks" style="color: var(--primary-blue);"></i>
+                                What Happens Next?
+                            </h3>
+                            <div style="display: grid; gap: var(--space-4);">
+                                <div style="display: flex; gap: var(--space-3);">
+                                    <div style="width: 32px; height: 32px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">1</div>
+                                    <div>
+                                        <strong style="display: block; margin-bottom: var(--space-1);">Admin Review</strong>
+                                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                            Our team will verify your payment within <strong>24-48 hours</strong> (1-2 business days)
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; gap: var(--space-3);">
+                                    <div style="width: 32px; height: 32px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">2</div>
+                                    <div>
+                                        <strong style="display: block; margin-bottom: var(--space-1);">Email Confirmation</strong>
+                                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                            You'll receive a confirmation email at <strong id="emailConfirm"></strong> once payment is verified
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; gap: var(--space-3);">
+                                    <div style="width: 32px; height: 32px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">3</div>
+                                    <div>
+                                        <strong style="display: block; margin-bottom: var(--space-1);">Access Your Portal</strong>
+                                        <p style="font-size: var(--font-sm); color: var(--neutral-600); margin: 0;">
+                                            Log in to your learning portal and start your journey with The Voices Of Future Rwanda
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Important Reminder -->
+                        <div style="background: #FFF3CD; border: 2px solid #FFC107; padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-8); text-align: left;">
+                            <div style="display: flex; align-items: start; gap: var(--space-3);">
+                                <i class="fas fa-envelope-open-text" style="color: #FF9800; font-size: 1.5rem; margin-top: 2px;"></i>
+                                <div>
+                                    <strong style="display: block; margin-bottom: var(--space-2);">📧 Check Your Email</strong>
+                                    <p style="margin: 0; font-size: var(--font-sm);">
+                                        We've sent a confirmation to your email. Please check your inbox (and spam folder) for important information about your registration.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div style="background: var(--neutral-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-8); text-align: left;">
+                            <h4 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);">
+                                <i class="fas fa-headset" style="color: var(--agaciro-gold);"></i>
+                                Need Assistance?
+                            </h4>
+                            <p style="font-size: var(--font-sm); color: var(--neutral-600); margin-bottom: var(--space-4);">
+                                If you have questions or urgent inquiries, feel free to contact us:
+                            </p>
+                            <div style="display: grid; gap: var(--space-3); font-size: var(--font-sm);">
+                                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                    <i class="fas fa-phone" style="color: var(--agaciro-gold);"></i>
+                                    <span>+250 736 483 410</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                    <i class="fas fa-phone" style="color: var(--agaciro-gold);"></i>
+                                    <span>+250 786 948 770</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                    <i class="fas fa-envelope" style="color: var(--agaciro-gold);"></i>
+                                    <span>info@thevoicesoffuturerwanda.com</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                            <a href="index.html" class="btn btn-outline">
+                                <i class="fas fa-home"></i>
+                                <span>Back to Home</span>
+                            </a>
+                            <a href="programs.html" class="btn btn-primary">
+                                <i class="fas fa-book"></i>
+                                <span>View Programs</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 The Voices Of Future Rwanda. All rights reserved. Made with <span style="color: #f44336;">♥</span> by <a href="https://teenznation.com">TeenzNation250</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display email and name from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        const name = urlParams.get('name');
+        
+        if (email) {
+            document.getElementById('userEmail').textContent = email;
+            document.getElementById('emailConfirm').textContent = email;
+        }
+        
+        if (name) {
+            document.getElementById('studentName').textContent = name;
+        }
+        
+        // Clear any remaining session storage
+        sessionStorage.removeItem('pendingUserEmail');
+        sessionStorage.removeItem('pendingStudentName');
+    </script>
+</body>
+</html>
