@@ -199,7 +199,7 @@ Upload the `lms` folder to your web server via FTP/SFTP.
 
 ## 🔗 Integration with Main Website
 
-The platform is designed to receive redirected users from the main registration page at `https://thevoicesoffuturerwanda.com/register.html`.
+The platform is designed to receive redirected users from the main registration page at `https://thevoicesoffuturerwanda.com/login.html`.
 
 ### Integration Steps:
 

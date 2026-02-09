@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!studentId) {
         alert('No pending registration found. Redirecting to registration page...');
-        window.location.href = 'register.html';
+        window.location.href = 'login.html';
         return;
     }
     
