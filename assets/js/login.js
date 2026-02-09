@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // Check for success message in URL (from password reset)
     const urlParams = new URLSearchParams(window.location.search);
-    const message = urlParams.get('message');
-    
-    if (message === 'password_reset') {
-        showSuccess('Password reset email sent! Check your inbox.');
-    }
+const message = urlParams.get('message');
+
+if (message === 'password_reset') {
+    showSuccess('Password reset email sent! Check your inbox.');
+} else if (message === 'email_confirmed') {
+    showSuccess('Email confirmed! You can now log in to your account.');
+}
     
     // Check if user is already logged in
     const { data: { session } } = await supabase.auth.getSession();

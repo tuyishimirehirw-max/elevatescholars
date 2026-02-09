@@ -381,15 +381,16 @@ async function handleFormSubmit(event) {
         
         // Step 1: Create user account in Supabase Auth
         const { data: authData, error: signUpError } = await supabase.auth.signUp({
-            email: formData.contactInfo.studentEmail,
-            password: formData.accountInfo.password,
-            options: {
-                data: {
-                    full_name: formData.studentInfo.name,
-                    user_type: formData.userType
-                }
-            }
-        });
+    email: formData.contactInfo.studentEmail,
+    password: formData.accountInfo.password,
+    options: {
+        data: {
+            full_name: formData.studentInfo.name,
+            user_type: formData.userType
+        },
+        emailRedirectTo: 'https://thevoicesoffuturerwanda.com/login.html?message=email_confirmed'
+    }
+});
         
         if (signUpError) {
             throw new Error(`Account creation failed: ${signUpError.message}`);
