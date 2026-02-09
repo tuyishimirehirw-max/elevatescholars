@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - The Voices Of Future Rwanda</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon-32x32.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-10) var(--space-6);
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-10);
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+        
+        .welcome-section {
+            flex: 1;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: var(--space-3);
+        }
+        
+        .payment-status-message {
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-8);
+            display: none;
+            align-items: start;
+            gap: var(--space-4);
+        }
+        
+        .payment-status-message.warning {
+            background: #FFF3CD;
+            border: 2px solid #FFC107;
+            color: #856404;
+        }
+        
+        .payment-status-message.error {
+            background: #F8D7DA;
+            border: 2px solid #F5C6CB;
+            color: #721C24;
+        }
+        
+        .payment-status-message i {
+            font-size: 1.5rem;
+            margin-top: 2px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-10);
+        }
+        
+        .stat-card {
+            background: white;
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+        }
+        
+        .stat-card .stat-value {
+            font-size: var(--font-3xl);
+            font-weight: bold;
+            margin-bottom: var(--space-2);
+        }
+        
+        .stat-card .stat-label {
+            color: var(--neutral-600);
+            font-size: var(--font-sm);
+        }
+        
+        .courses-section {
+            margin-bottom: var(--space-10);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-6);
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        
+        .course-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: var(--gradient-agaciro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .course-thumbnail i {
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .course-content {
+            padding: var(--space-6);
+        }
+        
+        .course-title {
+            font-size: var(--font-xl);
+            margin-bottom: var(--space-3);
+        }
+        
+        .course-description {
+            color: var(--neutral-600);
+            margin-bottom: var(--space-4);
+            font-size: var(--font-sm);
+        }
+        
+        .course-meta {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            font-size: var(--font-sm);
+            color: var(--neutral-600);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: var(--space-20) var(--space-6);
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--neutral-400);
+            margin-bottom: var(--space-4);
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="../assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+                <span class="logo-tagline">The Voices Of Future Rwanda</span>
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="courses.html">My Courses</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li class="navbar-cta">
+                    <button onclick="handleLogout()" class="btn btn-outline btn-sm">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </li>
+            </ul>
+
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="background: var(--neutral-50); min-height: 80vh;">
+        <div class="dashboard-container">
+            
+            <!-- Payment Status Message -->
+            <div id="paymentStatusMessage" class="payment-status-message"></div>
+            
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-2);">
+                        Welcome back, <span id="userName">Student</span>! 👋
+                    </h1>
+                    <p style="color: var(--neutral-600); font-size: var(--font-lg);">
+                        Continue your journey to leadership excellence
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(33, 150, 243, 0.1);">
+                        <i class="fas fa-book" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="stat-value" id="enrolledCoursesCount">0</div>
+                    <div class="stat-label">Enrolled Courses</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(76, 175, 80, 0.1);">
+                        <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                    </div>
+                    <div class="stat-value" id="completedModulesCount">0</div>
+                    <div class="stat-label">Modules Completed</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(255, 193, 7, 0.1);">
+                        <i class="fas fa-clock" style="color: #FFC107;"></i>
+                    </div>
+                    <div class="stat-value" id="studyHours">0h</div>
+                    <div class="stat-label">Study Time</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(156, 39, 176, 0.1);">
+                        <i class="fas fa-trophy" style="color: #9C27B0;"></i>
+                    </div>
+                    <div class="stat-value" id="achievementsCount">0</div>
+                    <div class="stat-label">Achievements</div>
+                </div>
+            </div>
+
+            <!-- Courses Section -->
+            <div class="courses-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                    <h2 style="font-size: var(--font-2xl);">My Courses</h2>
+                    <a href="courses.html" class="btn btn-outline btn-sm">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Courses Grid -->
+                <div id="coursesContainer" class="courses-grid">
+                    <!-- Courses will be loaded here by JavaScript -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <i class="fas fa-book-open"></i>
+                    <h3 style="margin-bottom: var(--space-3);">No Courses Yet</h3>
+                    <p style="color: var(--neutral-600); margin-bottom: var(--space-6);">
+                        Your courses will appear here once your payment is verified
+                    </p>
+                    <a href="../contact.html" class="btn btn-primary">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact Support</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" style="display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <div class="spinner" style="width: 60px; height: 60px; border: 6px solid rgba(255,255,255,0.3); border-top: 6px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto var(--space-4);"></div>
+                <p style="font-size: var(--font-lg); margin: 0;">Loading dashboard...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 The Voices Of Future Rwanda. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script src="../assets/js/main.js"></script>
+    <script type="module" src="../assets/js/dashboard.js"></script>
+</body>
+</html>

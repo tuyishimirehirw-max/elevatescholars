@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - The Voices Of Future Rwanda</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+                <span class="logo-tagline">The Voices Of Future Rwanda</span>
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="programs.html" class="dropdown-toggle">Programs</a>
+                    <div class="dropdown-menu">
+                        <a href="programs/high-school.html">High School</a>
+                        <a href="programs/university.html">University & Professional</a>
+                    </div>
+                </li>
+                <li><a href="scholars/index.html">Scholar Portfolios</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="navbar-cta">
+                    <a href="register.html" class="btn btn-gold btn-sm">Enroll Now</a>
+                </li>
+            </ul>
+
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="padding-top: var(--space-20); padding-bottom: var(--space-20); background: var(--neutral-50); min-height: 80vh;">
+        <div class="container">
+            <div style="max-width: 500px; margin: 0 auto;">
+                
+                <!-- Header -->
+                <div style="text-align: center; margin-bottom: var(--space-10);">
+                    <div class="badge badge-gold" style="margin-bottom: var(--space-4);">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Student Portal</span>
+                    </div>
+                    <h1 style="font-size: var(--font-3xl); margin-bottom: var(--space-3);">Welcome Back</h1>
+                    <p style="font-size: var(--font-lg); color: var(--neutral-600);">
+                        Sign in to access your learning portal
+                    </p>
+                </div>
+
+                <!-- Login Card -->
+                <div class="card">
+                    <div class="card-body" style="padding: var(--space-10);">
+                        
+                        <!-- Success Message (shown after password reset) -->
+                        <div id="successMessage" style="display: none; background: #D4EDDA; border: 1px solid #C3E6CB; color: #155724; padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="successText"></span>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div id="errorMessage" style="display: none; background: #F8D7DA; border: 1px solid #F5C6CB; color: #721C24; padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm">
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <div style="position: relative;">
+                                    <i class="fas fa-envelope" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--neutral-500);"></i>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        required
+                                        placeholder="your.email@example.com"
+                                        style="padding-left: 40px;"
+                                        autocomplete="email"
+                                    >
+                                </div>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password *</label>
+                                <div style="position: relative;">
+                                    <i class="fas fa-lock" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--neutral-500);"></i>
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password" 
+                                        required
+                                        placeholder="Enter your password"
+                                        style="padding-left: 40px; padding-right: 40px;"
+                                        autocomplete="current-password"
+                                    >
+                                    <button 
+                                        type="button" 
+                                        onclick="togglePasswordVisibility()"
+                                        style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--neutral-500);"
+                                    >
+                                        <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                                    </button>
+                                </div>
+                                <span class="error-message" id="passwordError"></span>
+                            </div>
+
+                            <!-- Remember Me & Forgot Password -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                                <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer; font-size: var(--font-sm);">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="forgot-password.html" style="font-size: var(--font-sm); color: var(--agaciro-gold); text-decoration: none;">
+                                    Forgot password?
+                                </a>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary" id="loginButton" style="width: 100%; margin-bottom: var(--space-6);">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span>Sign In</span>
+                            </button>
+
+                            <!-- Divider -->
+                            <div style="text-align: center; margin-bottom: var(--space-6);">
+                                <span style="color: var(--neutral-500); font-size: var(--font-sm);">
+                                    Don't have an account?
+                                </span>
+                            </div>
+
+                            <!-- Register Link -->
+                            <a href="register.html" class="btn btn-outline" style="width: 100%; text-align: center; text-decoration: none;">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Create New Account</span>
+                            </a>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div style="text-align: center; margin-top: var(--space-8); padding: var(--space-6); background: white; border-radius: var(--radius-lg);">
+                    <h4 style="margin-bottom: var(--space-3); font-size: var(--font-lg);">Need Help?</h4>
+                    <p style="color: var(--neutral-600); margin-bottom: var(--space-4); font-size: var(--font-sm);">
+                        If you're having trouble logging in, contact our support team
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: var(--space-6); flex-wrap: wrap; font-size: var(--font-sm);">
+                        <a href="tel:+250736483410" style="display: flex; align-items: center; gap: var(--space-2); color: var(--agaciro-gold); text-decoration: none;">
+                            <i class="fas fa-phone"></i>
+                            <span>+250 736 483 410</span>
+                        </a>
+                        <a href="mailto:info@thevoicesoffuturerwanda.com" style="display: flex; align-items: center; gap: var(--space-2); color: var(--agaciro-gold); text-decoration: none;">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Support</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <div class="spinner" style="width: 60px; height: 60px; border: 6px solid rgba(255,255,255,0.3); border-top: 6px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto var(--space-4);"></div>
+                <p style="font-size: var(--font-lg); margin: 0;">Signing you in...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 The Voices Of Future Rwanda. All rights reserved. Made with <span style="color: #f44336;">♥</span> by <a href="https://teenznation.com">TeenzNation250</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/login.js"></script>
+</body>
+</html>
