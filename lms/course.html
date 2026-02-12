@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Viewer - The Voices Of Future Rwanda</title>
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .course-viewer {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+            min-height: calc(100vh - 80px);
+            background: white;
+        }
+        
+        .module-sidebar {
+            background: var(--neutral-100);
+            border-right: 1px solid var(--neutral-300);
+            padding: var(--space-6);
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+        }
+        
+        .module-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .module-item {
+            margin-bottom: var(--space-3);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--neutral-300);
+            transition: all 0.2s;
+        }
+        
+        .module-item:hover {
+            border-color: var(--agaciro-gold);
+        }
+        
+        .module-item.active {
+            border-color: var(--agaciro-gold);
+            background: #FFF9E5;
+        }
+        
+        .module-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            text-decoration: none;
+            color: var(--neutral-800);
+            cursor: pointer;
+        }
+        
+        .module-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .module-item.active .module-number {
+            background: var(--agaciro-gold);
+            color: white;
+        }
+        
+        .module-item.completed .module-number {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .module-title-text {
+            flex: 1;
+            font-size: var(--font-sm);
+            font-weight: 500;
+        }
+        
+        .module-content-area {
+            padding: var(--space-10);
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+        }
+        
+        .module-header {
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-6);
+            border-bottom: 2px solid var(--neutral-200);
+        }
+        
+        .module-meta {
+            display: flex;
+            gap: var(--space-6);
+            margin-top: var(--space-4);
+            font-size: var(--font-sm);
+            color: var(--neutral-600);
+        }
+        
+        .module-body {
+            font-size: var(--font-base);
+            line-height: 1.8;
+            color: var(--neutral-800);
+        }
+        
+        .module-body h2 {
+            margin-top: var(--space-8);
+            margin-bottom: var(--space-4);
+            color: var(--agaciro-gold);
+        }
+        
+        .module-body h3 {
+            margin-top: var(--space-6);
+            margin-bottom: var(--space-3);
+        }
+        
+        .module-body ul, .module-body ol {
+            margin: var(--space-4) 0;
+            padding-left: var(--space-8);
+        }
+        
+        .module-body li {
+            margin-bottom: var(--space-2);
+        }
+        
+        .module-actions {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-10);
+            padding-top: var(--space-8);
+            border-top: 2px solid var(--neutral-200);
+        }
+        
+        .quiz-section {
+            background: #F0F7FF;
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            margin-top: var(--space-8);
+        }
+        
+        .quiz-question {
+            background: white;
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-4);
+        }
+        
+        .completion-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: #D4EDDA;
+            color: #155724;
+            border-radius: var(--radius-full);
+            font-size: var(--font-sm);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .course-viewer {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-sidebar {
+                max-height: 300px;
+                border-right: none;
+                border-bottom: 1px solid var(--neutral-300);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="../assets/img/logo/logo.png" alt="The Voices Of Future Rwanda" class="logo-img">
+                <span class="logo-tagline">The Voices Of Future Rwanda</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="course.html">My Courses</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li class="navbar-cta">
+                    <button onclick="handleLogout()" class="btn btn-outline btn-sm">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="course-viewer">
+        <!-- Module Sidebar -->
+        <aside class="module-sidebar">
+            <div style="margin-bottom: var(--space-6);">
+                <a href="dashboard.html" style="display: flex; align-items: center; gap: var(--space-2); color: var(--neutral-600); text-decoration: none; font-size: var(--font-sm);">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+            </div>
+            
+            <h3 style="margin-bottom: var(--space-4); font-size: var(--font-lg);" id="courseTitle">Loading...</h3>
+            
+            <div style="margin-bottom: var(--space-6);">
+                <div style="font-size: var(--font-sm); color: var(--neutral-600); margin-bottom: var(--space-2);">Progress</div>
+                <div style="height: 8px; background: var(--neutral-200); border-radius: 4px; overflow: hidden;">
+                    <div id="progressBar" style="height: 100%; width: 0%; background: var(--agaciro-gold); transition: width 0.3s;"></div>
+                </div>
+                <div style="font-size: var(--font-sm); color: var(--neutral-600); margin-top: var(--space-2);">
+                    <span id="progressText">0%</span> Complete
+                </div>
+            </div>
+            
+            <ul class="module-list" id="moduleList">
+                <!-- Modules will be loaded here -->
+            </ul>
+        </aside>
+
+        <!-- Module Content Area -->
+        <main class="module-content-area">
+            <div id="loadingState" style="text-align: center; padding: var(--space-20);">
+                <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--agaciro-gold);"></i>
+                <p style="margin-top: var(--space-4); color: var(--neutral-600);">Loading module...</p>
+            </div>
+            
+            <div id="moduleContent" style="display: none;">
+                <div class="module-header">
+                    <h1 id="moduleTitle">Module Title</h1>
+                    <div class="module-meta">
+                        <span id="moduleDuration"><i class="fas fa-clock"></i> 60 min</span>
+                        <span id="moduleOrder"><i class="fas fa-book"></i> Module 1</span>
+                        <span id="completionStatus"></span>
+                    </div>
+                </div>
+                
+                <div class="module-body" id="moduleBody">
+                    <!-- Module content will be inserted here -->
+                </div>
+                
+                <div class="module-actions">
+                    <button id="prevButton" class="btn btn-outline" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Previous Module</span>
+                    </button>
+                    <button id="completeButton" class="btn btn-primary">
+                        <i class="fas fa-check"></i>
+                        <span>Mark as Complete</span>
+                    </button>
+                    <button id="nextButton" class="btn btn-primary" style="margin-left: auto;">
+                        <span>Next Module</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script type="module" src="../assets/js/course-viewer.js"></script>
+    
+</body>
+</html>

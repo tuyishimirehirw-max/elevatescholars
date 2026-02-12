@@ -1,8 +1,8 @@
 // lms/assets/js/dashboard.js (or assets/js/dashboard.js if in root)
 // Dashboard logic with authentication and data loading
 
-import { supabase } from '../assets/js/supabase-client.js';
-import { requireAuth, checkPaymentStatus, getUserCourses, signOut, displayPaymentStatus } from '../assets/js/auth-check.js';
+import { supabase } from './supabase-client.js';
+import { requireAuth, checkPaymentStatus, getUserCourses, signOut, displayPaymentStatus } from './auth-check.js';
 
 let currentUser = null;
 let userProfile = null;
