@@ -1,140 +1,1450 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Admin Panel</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/admin.css">
+    <title>Admin Dashboard – The Voices Of Future Rwanda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --gold-dim: rgba(201,168,76,0.12);
+            --dark: #0D0D0D;
+            --dark-2: #141414;
+            --dark-3: #1C1C1C;
+            --dark-4: #252525;
+            --dark-5: #2E2E2E;
+            --text: #E8E8E8;
+            --text-muted: #888;
+            --text-dim: #555;
+            --green: #2ECC71;
+            --green-dim: rgba(46,204,113,0.12);
+            --red: #E74C3C;
+            --red-dim: rgba(231,76,60,0.12);
+            --blue: #3498DB;
+            --blue-dim: rgba(52,152,219,0.12);
+            --orange: #F39C12;
+            --orange-dim: rgba(243,156,18,0.12);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 240px;
+            background: var(--dark-2);
+            border-right: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-logo {
+            padding: 24px 20px;
+            border-bottom: 1px solid #222;
+        }
+
+        .sidebar-logo .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--gold);
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-logo .logo-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 16px 0;
+            overflow-y: auto;
+        }
+
+        .nav-section-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+            padding: 12px 20px 6px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 13.5px;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-item:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .nav-item.active {
+            color: var(--gold);
+            background: var(--gold-dim);
+            border-left-color: var(--gold);
+        }
+
+        .nav-item i { width: 16px; text-align: center; font-size: 14px; }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid #222;
+        }
+
+        .admin-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-avatar {
+            width: 34px;
+            height: 34px;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--gold);
+        }
+
+        .admin-info .name { font-size: 13px; font-weight: 600; }
+        .admin-info .role { font-size: 11px; color: var(--text-muted); }
+
+        /* ── Main Content ── */
+        .main {
+            margin-left: 240px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            background: var(--dark-2);
+            border-bottom: 1px solid #222;
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .topbar-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .topbar-actions { display: flex; align-items: center; gap: 12px; }
+
+        .topbar-btn {
+            padding: 7px 14px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: var(--dark-3);
+            color: var(--text-muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s;
+        }
+
+        .topbar-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* ── Content Area ── */
+        .content { padding: 28px; flex: 1; }
+
+        /* ── Stats Grid ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: var(--dark-2);
+            border: 1px solid #222;
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .stat-card:hover { border-color: #333; }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            opacity: 0.07;
+            transform: translate(20px, -20px);
+        }
+
+        .stat-card.gold::before { background: var(--gold); }
+        .stat-card.green::before { background: var(--green); }
+        .stat-card.red::before { background: var(--red); }
+        .stat-card.blue::before { background: var(--blue); }
+
+        .stat-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .stat-card.gold .stat-icon { background: var(--gold-dim); color: var(--gold); }
+        .stat-card.green .stat-icon { background: var(--green-dim); color: var(--green); }
+        .stat-card.red .stat-icon { background: var(--red-dim); color: var(--red); }
+        .stat-card.blue .stat-icon { background: var(--blue-dim); color: var(--blue); }
+
+        .stat-value {
+            font-family: 'Syne', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label { font-size: 12px; color: var(--text-muted); }
+
+        /* ── Panels ── */
+        .panel {
+            background: var(--dark-2);
+            border: 1px solid #222;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-title i { color: var(--gold); font-size: 14px; }
+
+        .panel-badge {
+            background: var(--gold-dim);
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 20px;
+        }
+
+        /* ── Filters ── */
+        .filters {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1a1a1a;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); }
+        .filter-btn:hover:not(.active) { border-color: #444; color: var(--text); }
+
+        .search-input {
+            padding: 6px 14px 6px 34px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            background: var(--dark-3);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12.5px;
+            width: 220px;
+            outline: none;
+            transition: border-color 0.2s;
+            position: relative;
+        }
+
+        .search-input:focus { border-color: var(--gold); }
+
+        .search-wrapper {
+            position: relative;
+            margin-left: auto;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        /* ── Table ── */
+        .table-wrap { overflow-x: auto; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        thead th {
+            padding: 11px 16px;
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            font-weight: 600;
+            border-bottom: 1px solid #1e1e1e;
+            white-space: nowrap;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #1a1a1a;
+            transition: background 0.15s;
+        }
+
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: rgba(255,255,255,0.025); }
+
+        td { padding: 13px 16px; vertical-align: middle; }
+
+        .student-info { display: flex; align-items: center; gap: 11px; }
+
+        .student-avatar {
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: var(--dark-4);
+            border: 1px solid #333;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .student-name { font-weight: 600; font-size: 13.5px; }
+        .student-email { font-size: 11.5px; color: var(--text-muted); margin-top: 1px; }
+
+        /* ── Status Badges ── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-pending { background: var(--orange-dim); color: var(--orange); }
+        .badge-verified { background: var(--green-dim); color: var(--green); }
+        .badge-rejected { background: var(--red-dim); color: var(--red); }
+        .badge-enrolled { background: var(--blue-dim); color: var(--blue); }
+        .badge-not-enrolled { background: rgba(255,255,255,0.05); color: var(--text-muted); }
+
+        .badge i { font-size: 9px; }
+
+        /* ── Action Buttons ── */
+        .action-btns { display: flex; align-items: center; gap: 7px; }
+
+        .action-btn {
+            width: 30px; height: 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: var(--dark-3);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .action-btn.approve:hover { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+        .action-btn.reject:hover { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+
+        .btn-verify {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: none;
+            background: var(--green);
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex; align-items: center; gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-verify:hover { opacity: 0.85; }
+        .btn-verify:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .btn-reject {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--red);
+            background: transparent;
+            color: var(--red);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex; align-items: center; gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-reject:hover { background: var(--red-dim); }
+
+        /* ── Modal ── */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: var(--dark-2);
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 540px;
+            animation: slideUp 0.25s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .modal-close {
+            width: 30px; height: 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover { border-color: var(--red); color: var(--red); }
+
+        .modal-body { padding: 24px; }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1e1e1e;
+            font-size: 13.5px;
+        }
+
+        .detail-row:last-child { border-bottom: none; }
+        .detail-label { color: var(--text-muted); }
+        .detail-value { font-weight: 500; text-align: right; max-width: 60%; }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #222;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* ── Toast ── */
+        .toast-container {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: var(--dark-3);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13.5px;
+            min-width: 280px;
+            animation: slideInRight 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .toast.success { border-color: var(--green); }
+        .toast.error { border-color: var(--red); }
+
+        .toast-icon { font-size: 16px; }
+        .toast.success .toast-icon { color: var(--green); }
+        .toast.error .toast-icon { color: var(--red); }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ── Loading ── */
+        .skeleton {
+            background: linear-gradient(90deg, var(--dark-3) 25%, var(--dark-4) 50%, var(--dark-3) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 6px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .empty-state {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .empty-state i { font-size: 40px; margin-bottom: 14px; opacity: 0.4; }
+        .empty-state p { font-size: 14px; }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .main { margin-left: 0; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="admin-layout">
-        <!-- Sidebar -->
-        <aside class="admin-sidebar">
-            <div class="admin-sidebar-header">
-                <img src="../assets/img/logo/logo-small.png" alt="Logo" class="admin-sidebar-logo"
-                    onerror="this.src='../assets/img/logo/logo.png'">
-                <p class="admin-sidebar-title">Admin Panel</p>
-            </div>
 
-            <nav class="admin-nav">
-                <a href="dashboard.html" class="admin-nav-item active">
-                    <i class="fas fa-home"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a href="registrations.html" class="admin-nav-item">
-                    <i class="fas fa-user-plus"></i>
-                    <span>Registrations</span>
-                </a>
-                <a href="contacts.html" class="admin-nav-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Contact Messages</span>
-                </a>
-                <a href="programs.html" class="admin-nav-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Programs</span>
-                </a>
-                <a href="syllabus.html" class="admin-nav-item">
-                    <i class="fas fa-book"></i>
-                    <span>Syllabus</span>
-                </a>
-                <hr style="border-color: rgba(255,255,255,0.1); margin: 1rem 0;">
-                <a href="#" class="admin-nav-item btn-logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="admin-main">
-            <!-- Header -->
-            <header class="admin-header">
-                <h1>Dashboard</h1>
-                <div class="admin-user-menu">
-                    <div class="admin-user-info">
-                        <span class="admin-user-name">Loading...</span>
-                        <span class="admin-user-role">Admin</span>
-                    </div>
-                    <button class="btn btn-outline btn-sm btn-logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Logout
-                    </button>
-                </div>
-            </header>
-
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Total Registrations</div>
-                    <div class="stat-value" id="totalRegistrations">0</div>
-                    <div class="stat-change positive">
-                        <i class="fas fa-arrow-up"></i> <span id="registrationsChange">0</span> this week
-                    </div>
-                </div>
-
-                <div class="stat-card gold">
-                    <div class="stat-label">Pending Approvals</div>
-                    <div class="stat-value" id="pendingRegistrations">0</div>
-                    <div class="stat-change">
-                        <i class="fas fa-clock"></i> Awaiting review
-                    </div>
-                </div>
-
-                <div class="stat-card green">
-                    <div class="stat-label">Active Programs</div>
-                    <div class="stat-value" id="activePrograms">0</div>
-                    <div class="stat-change">
-                        <i class="fas fa-check-circle"></i> Published
-                    </div>
-                </div>
-
-                <div class="stat-card blue">
-                    <div class="stat-label">Contact Messages</div>
-                    <div class="stat-value" id="newContacts">0</div>
-                    <div class="stat-change">
-                        <i class="fas fa-envelope"></i> Unread
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Activity -->
-            <div class="admin-card">
-                <div class="admin-card-header">
-                    <h2 class="admin-card-title">Recent Registrations</h2>
-                    <a href="registrations.html" class="btn btn-primary btn-sm">View All</a>
-                </div>
-                <div id="recentRegistrations">
-                    <div style="text-align: center; padding: 2rem; color: #64748b;">
-                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <p>Loading recent registrations...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Contacts -->
-            <div class="admin-card">
-                <div class="admin-card-header">
-                    <h2 class="admin-card-title">Recent Contact Messages</h2>
-                    <a href="contacts.html" class="btn btn-primary btn-sm">View All</a>
-                </div>
-                <div id="recentContacts">
-                    <div style="text-align: center; padding: 2rem; color: #64748b;">
-                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <p>Loading recent messages...</p>
-                    </div>
-                </div>
-            </div>
-        </main>
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <div class="logo-text">Voices of Future Rwanda</div>
+        <div class="logo-sub">Admin Control Panel</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../assets/js/supabase-config.js"></script>
-    <script src="assets/js/admin-auth.js"></script>
-    <script src="assets/js/admin-dashboard.js"></script>
-</body>
+    <nav class="sidebar-nav">
+        <div class="nav-section-label">Overview</div>
+        <a class="nav-item active" onclick="showSection('overview')">
+            <i class="fas fa-chart-pie"></i> Dashboard
+        </a>
 
+        <div class="nav-section-label">Students</div>
+        <a class="nav-item" onclick="showSection('payments')">
+            <i class="fas fa-credit-card"></i> Payments
+            <span id="pendingBadge" style="margin-left:auto; background:var(--orange-dim); color:var(--orange); font-size:10px; font-weight:700; padding:2px 7px; border-radius:10px; display:none;"></span>
+        </a>
+        <a class="nav-item" onclick="showSection('students')">
+            <i class="fas fa-users"></i> All Students
+        </a>
+        <a class="nav-item" onclick="showSection('enrollments')">
+            <i class="fas fa-graduation-cap"></i> Enrollments
+        </a>
+
+        <div class="nav-section-label">Content</div>
+        <a class="nav-item" onclick="showSection('courses')">
+            <i class="fas fa-book-open"></i> Courses
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="admin-badge">
+            <div class="admin-avatar"><i class="fas fa-shield-alt"></i></div>
+            <div class="admin-info">
+                <div class="name">Admin</div>
+                <div class="role">Super Administrator</div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Main -->
+<div class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="topbar-title" id="pageTitle">Dashboard Overview</div>
+        <div class="topbar-actions">
+            <button class="topbar-btn" onclick="refreshData()">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+            <button class="topbar-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- ══ OVERVIEW SECTION ══ -->
+        <div id="section-overview">
+            <div class="stats-grid">
+                <div class="stat-card gold">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-value" id="stat-total">—</div>
+                    <div class="stat-label">Total Students</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-value" id="stat-verified">—</div>
+                    <div class="stat-label">Verified Payments</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="stat-value" id="stat-pending">—</div>
+                    <div class="stat-label">Pending Payments</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="stat-value" id="stat-enrolled">—</div>
+                    <div class="stat-label">Active Enrollments</div>
+                </div>
+            </div>
+
+            <!-- Recent Registrations -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-user-plus"></i> Recent Registrations
+                    </div>
+                    <button class="topbar-btn" onclick="showSection('students')">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="table-wrap">
+                    <table id="recentTable">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Program</th>
+                                <th>Payment</th>
+                                <th>Enrolled</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentBody">
+                            <tr><td colspan="6"><div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PAYMENTS SECTION ══ -->
+        <div id="section-payments" style="display:none;">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-credit-card"></i> Payment Management
+                        <span class="panel-badge" id="pendingCount">0 Pending</span>
+                    </div>
+                </div>
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterPayments('all', this)">All</button>
+                    <button class="filter-btn" onclick="filterPayments('pending', this)">Pending</button>
+                    <button class="filter-btn" onclick="filterPayments('verified', this)">Verified</button>
+                    <button class="filter-btn" onclick="filterPayments('rejected', this)">Rejected</button>
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Search student..." oninput="searchPayments(this.value)" />
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Reference</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsBody">
+                            <tr><td colspan="7"><div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ STUDENTS SECTION ══ -->
+        <div id="section-students" style="display:none;">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-users"></i> All Students
+                    </div>
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Search..." oninput="searchStudents(this.value)" />
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Phone</th>
+                                <th>Program</th>
+                                <th>Payment</th>
+                                <th>Enrolled</th>
+                                <th>Registered</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsBody">
+                            <tr><td colspan="7"><div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ENROLLMENTS SECTION ══ -->
+        <div id="section-enrollments" style="display:none;">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-graduation-cap"></i> Course Enrollments
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Course</th>
+                                <th>Enrolled On</th>
+                                <th>Access</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="enrollmentsBody">
+                            <tr><td colspan="5"><div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ COURSES SECTION ══ -->
+        <div id="section-courses" style="display:none;">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-book-open"></i> Course Library
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Modules</th>
+                                <th>Duration</th>
+                                <th>Students</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesBody">
+                            <tr><td colspan="5"><div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Student Detail Modal -->
+<div class="modal-overlay" id="studentModal">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title" id="modalStudentName">Student Details</div>
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import SUPABASE_CONFIG from '../assets/js/config.js';
+
+const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+
+// ── Global State ──
+let allPayments = [];
+let allStudents = [];
+let currentFilter = 'all';
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', async () => {
+    await checkAdminAuth();
+    await loadAllData();
+});
+
+async function checkAdminAuth() {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+        window.location.href = '/login.html';
+        return;
+    }
+}
+
+async function loadAllData() {
+    await Promise.all([
+        loadStats(),
+        loadRecentStudents(),
+        loadPayments(),
+        loadStudents(),
+        loadEnrollments(),
+        loadCourses()
+    ]);
+}
+
+// ── Stats ──
+async function loadStats() {
+    const [
+        { count: total },
+        { count: verified },
+        { count: pending },
+        { count: enrolled }
+    ] = await Promise.all([
+        supabase.from('student_profiles').select('*', { count: 'exact', head: true }),
+        supabase.from('payment_records').select('*', { count: 'exact', head: true }).eq('verified_by_admin', true),
+        supabase.from('payment_records').select('*', { count: 'exact', head: true }).eq('payment_status', 'pending'),
+        supabase.from('course_enrollments').select('*', { count: 'exact', head: true }).eq('access_granted', true)
+    ]);
+
+    document.getElementById('stat-total').textContent = total || 0;
+    document.getElementById('stat-verified').textContent = verified || 0;
+    document.getElementById('stat-pending').textContent = pending || 0;
+    document.getElementById('stat-enrolled').textContent = enrolled || 0;
+
+    // Show pending badge in sidebar
+    if (pending > 0) {
+        const badge = document.getElementById('pendingBadge');
+        badge.textContent = pending;
+        badge.style.display = 'block';
+    }
+
+    document.getElementById('pendingCount').textContent = `${pending || 0} Pending`;
+}
+
+// ── Load Recent Students ──
+async function loadRecentStudents() {
+    const { data, error } = await supabase
+        .from('student_profiles')
+        .select(`
+            id, full_name, selected_program, created_at,
+            payment_records(payment_status, verified_by_admin),
+            course_enrollments(access_granted)
+        `)
+        .order('created_at', { ascending: false })
+        .limit(8);
+
+    if (error) { console.error(error); return; }
+
+    const tbody = document.getElementById('recentBody');
+    if (!data?.length) {
+        tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fas fa-users"></i><p>No students registered yet</p></div></td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = data.map(s => {
+        const payment = s.payment_records?.[0];
+        const enrollment = s.course_enrollments?.[0];
+        return studentRow(s, payment, enrollment);
+    }).join('');
+}
+
+// ── Load All Payments ──
+async function loadPayments() {
+    const { data, error } = await supabase
+        .from('payment_records')
+        .select(`
+            id, amount, payment_method, transaction_reference,
+            payment_status, verified_by_admin, created_at, admin_notes,
+            student_profiles(id, full_name, selected_program)
+        `)
+        .order('created_at', { ascending: false });
+
+    if (error) { console.error(error); return; }
+    allPayments = data || [];
+    renderPayments(allPayments);
+}
+
+function renderPayments(data) {
+    const tbody = document.getElementById('paymentsBody');
+    if (!data?.length) {
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fas fa-credit-card"></i><p>No payments found</p></div></td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = data.map(p => {
+        const s = p.student_profiles;
+        const initials = s?.full_name?.split(' ').map(n=>n[0]).join('').slice(0,2) || '?';
+        const statusBadge = paymentBadge(p.payment_status, p.verified_by_admin);
+
+        return `
+        <tr>
+            <td>
+                <div class="student-info">
+                    <div class="student-avatar">${initials}</div>
+                    <div>
+                        <div class="student-name">${s?.full_name || 'Unknown'}</div>
+                        <div class="student-email">${s?.selected_program || '—'}</div>
+                    </div>
+                </div>
+            </td>
+            <td style="font-weight:600; color:var(--gold);">RWF ${Number(p.amount || 0).toLocaleString()}</td>
+            <td>${p.payment_method || '—'}</td>
+            <td style="font-family:monospace; font-size:12px; color:var(--text-muted);">${p.transaction_reference || '—'}</td>
+            <td>${statusBadge}</td>
+            <td style="color:var(--text-muted); font-size:12px;">${formatDate(p.created_at)}</td>
+            <td>
+                ${p.payment_status === 'pending' && !p.verified_by_admin ? `
+                    <div class="action-btns">
+                        <button class="btn-verify" onclick="verifyPayment('${p.id}', '${s?.id}')">
+                            <i class="fas fa-check"></i> Verify
+                        </button>
+                        <button class="btn-reject" onclick="rejectPayment('${p.id}')">
+                            Reject
+                        </button>
+                    </div>
+                ` : `
+                    <span style="font-size:12px; color:var(--text-muted);">
+                        ${p.verified_by_admin ? 'Verified ✓' : p.payment_status}
+                    </span>
+                `}
+            </td>
+        </tr>`;
+    }).join('');
+}
+
+// ── Load All Students ──
+async function loadStudents() {
+    const { data, error } = await supabase
+        .from('student_profiles')
+        .select(`
+            id, full_name, phone_number, selected_program, created_at,
+            payment_records(payment_status, verified_by_admin),
+            course_enrollments(access_granted)
+        `)
+        .order('created_at', { ascending: false });
+
+    if (error) { console.error(error); return; }
+    allStudents = data || [];
+    renderStudents(allStudents);
+}
+
+function renderStudents(data) {
+    const tbody = document.getElementById('studentsBody');
+    if (!data?.length) {
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fas fa-users"></i><p>No students found</p></div></td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = data.map(s => {
+        const payment = s.payment_records?.[0];
+        const enrollment = s.course_enrollments?.[0];
+        return `
+        <tr>
+            <td>
+                <div class="student-info">
+                    <div class="student-avatar">${(s.full_name||'?').split(' ').map(n=>n[0]).join('').slice(0,2)}</div>
+                    <div>
+                        <div class="student-name">${s.full_name}</div>
+                    </div>
+                </div>
+            </td>
+            <td style="font-size:12.5px;">${s.phone_number || '—'}</td>
+            <td style="font-size:12.5px;">${s.selected_program || '—'}</td>
+            <td>${paymentBadge(payment?.payment_status, payment?.verified_by_admin)}</td>
+            <td>
+                <span class="badge ${enrollment?.access_granted ? 'badge-enrolled' : 'badge-not-enrolled'}">
+                    <i class="fas fa-${enrollment?.access_granted ? 'graduation-cap' : 'minus'}"></i>
+                    ${enrollment?.access_granted ? 'Enrolled' : 'Not Enrolled'}
+                </span>
+            </td>
+            <td style="font-size:12px; color:var(--text-muted);">${formatDate(s.created_at)}</td>
+            <td>
+                <div class="action-btns">
+                    <button class="action-btn" onclick="viewStudent('${s.id}')" title="View Details">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    ${payment && !payment.verified_by_admin && payment.payment_status === 'pending' ? `
+                    <button class="action-btn approve" onclick="verifyPaymentByStudent('${s.id}')" title="Verify Payment">
+                        <i class="fas fa-check"></i>
+                    </button>` : ''}
+                </div>
+            </td>
+        </tr>`;
+    }).join('');
+}
+
+// ── Load Enrollments ──
+async function loadEnrollments() {
+    const { data, error } = await supabase
+        .from('course_enrollments')
+        .select(`
+            id, enrollment_date, access_granted,
+            student_profiles(full_name),
+            courses(title)
+        `)
+        .order('enrollment_date', { ascending: false });
+
+    if (error) { console.error(error); return; }
+
+    const tbody = document.getElementById('enrollmentsBody');
+    if (!data?.length) {
+        tbody.innerHTML = `<tr><td colspan="5"><div class="empty-state"><i class="fas fa-graduation-cap"></i><p>No enrollments yet</p></div></td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = data.map(e => `
+        <tr>
+            <td>
+                <div class="student-info">
+                    <div class="student-avatar">${(e.student_profiles?.full_name||'?').split(' ').map(n=>n[0]).join('').slice(0,2)}</div>
+                    <div class="student-name">${e.student_profiles?.full_name || 'Unknown'}</div>
+                </div>
+            </td>
+            <td style="font-size:13px;">${e.courses?.title || 'Unknown Course'}</td>
+            <td style="font-size:12px; color:var(--text-muted);">${formatDate(e.enrollment_date)}</td>
+            <td>
+                <span class="badge ${e.access_granted ? 'badge-verified' : 'badge-rejected'}">
+                    <i class="fas fa-${e.access_granted ? 'check' : 'times'}"></i>
+                    ${e.access_granted ? 'Active' : 'Revoked'}
+                </span>
+            </td>
+            <td>
+                <button class="action-btn ${e.access_granted ? 'reject' : 'approve'}" 
+                    onclick="toggleEnrollmentAccess('${e.id}', ${e.access_granted})"
+                    title="${e.access_granted ? 'Revoke Access' : 'Grant Access'}">
+                    <i class="fas fa-${e.access_granted ? 'ban' : 'check'}"></i>
+                </button>
+            </td>
+        </tr>`).join('');
+}
+
+// ── Load Courses ──
+async function loadCourses() {
+    const { data, error } = await supabase
+        .from('courses')
+        .select(`
+            id, title, duration_weeks, is_published,
+            course_modules(id),
+            course_enrollments(id)
+        `)
+        .order('title');
+
+    if (error) { console.error(error); return; }
+
+    const tbody = document.getElementById('coursesBody');
+    if (!data?.length) {
+        tbody.innerHTML = `<tr><td colspan="5"><div class="empty-state"><i class="fas fa-book-open"></i><p>No courses created yet</p></div></td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = data.map(c => `
+        <tr>
+            <td>
+                <div style="font-weight:600; font-size:13.5px;">${c.title}</div>
+            </td>
+            <td style="font-size:13px;">${c.course_modules?.length || 0} modules</td>
+            <td style="font-size:13px;">${c.duration_weeks || 0} weeks</td>
+            <td style="font-size:13px;">${c.course_enrollments?.length || 0} students</td>
+            <td>
+                <span class="badge ${c.is_published ? 'badge-verified' : 'badge-not-enrolled'}">
+                    ${c.is_published ? 'Published' : 'Draft'}
+                </span>
+            </td>
+        </tr>`).join('');
+}
+
+// ── Verify Payment ──
+window.verifyPayment = async (paymentId, studentId) => {
+    if (!confirm('Verify this payment and enroll the student?')) return;
+
+    try {
+        // 1. Update payment record
+        const { error: paymentError } = await supabase
+            .from('payment_records')
+            .update({
+                payment_status: 'verified',
+                verified_by_admin: true,
+                verified_at: new Date().toISOString()
+            })
+            .eq('id', paymentId);
+
+        if (paymentError) throw paymentError;
+
+        // 2. Get student's program to find matching course
+        const { data: studentData } = await supabase
+            .from('student_profiles')
+            .select('id, selected_program')
+            .eq('id', studentId)
+            .single();
+
+        // 3. Find matching course
+        const { data: courses } = await supabase
+            .from('courses')
+            .select('id, title')
+            .eq('is_published', true);
+
+        const matchedCourse = courses?.find(c =>
+            c.title.toLowerCase().includes(
+                studentData?.selected_program?.toLowerCase().includes('high') ||
+                studentData?.selected_program?.toLowerCase().includes('secondary')
+                    ? 'secondary' : 'university'
+            )
+        ) || courses?.[0];
+
+        // 4. Enroll student
+        if (matchedCourse && studentData) {
+            const { error: enrollError } = await supabase
+                .from('course_enrollments')
+                .upsert({
+                    student_id: studentData.id,
+                    course_id: matchedCourse.id,
+                    access_granted: true,
+                    enrollment_date: new Date().toISOString()
+                }, { onConflict: 'student_id,course_id' });
+
+            if (enrollError) throw enrollError;
+        }
+
+        showToast('Payment verified & student enrolled!', 'success');
+        await loadAllData();
+
+    } catch (error) {
+        console.error(error);
+        showToast('Error: ' + error.message, 'error');
+    }
+};
+
+// ── Verify Payment by Student ID ──
+window.verifyPaymentByStudent = async (studentProfileId) => {
+    const { data: payment } = await supabase
+        .from('payment_records')
+        .select('id')
+        .eq('student_id', studentProfileId)
+        .eq('payment_status', 'pending')
+        .single();
+
+    if (payment) {
+        await verifyPayment(payment.id, studentProfileId);
+    }
+};
+
+// ── Reject Payment ──
+window.rejectPayment = async (paymentId) => {
+    const reason = prompt('Reason for rejection (optional):');
+    if (reason === null) return;
+
+    const { error } = await supabase
+        .from('payment_records')
+        .update({
+            payment_status: 'rejected',
+            verified_by_admin: false,
+            admin_notes: reason || 'Payment rejected by admin'
+        })
+        .eq('id', paymentId);
+
+    if (error) {
+        showToast('Error: ' + error.message, 'error');
+    } else {
+        showToast('Payment rejected.', 'success');
+        await loadAllData();
+    }
+};
+
+// ── View Student ──
+window.viewStudent = async (studentId) => {
+    const { data: s } = await supabase
+        .from('student_profiles')
+        .select(`
+            *, 
+            payment_records(payment_status, verified_by_admin, amount, transaction_reference, payment_method, created_at),
+            course_enrollments(access_granted, enrollment_date, courses(title))
+        `)
+        .eq('id', studentId)
+        .single();
+
+    if (!s) return;
+
+    const payment = s.payment_records?.[0];
+    const enrollment = s.course_enrollments?.[0];
+
+    document.getElementById('modalStudentName').textContent = s.full_name;
+    document.getElementById('modalBody').innerHTML = `
+        <div class="detail-row"><span class="detail-label">Full Name</span><span class="detail-value">${s.full_name}</span></div>
+        <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value">${s.phone_number || '—'}</span></div>
+        <div class="detail-row"><span class="detail-label">Email (Auth)</span><span class="detail-value" style="font-size:12px;">${s.guardian_email || '—'}</span></div>
+        <div class="detail-row"><span class="detail-label">Program</span><span class="detail-value">${s.selected_program || '—'}</span></div>
+        <div class="detail-row"><span class="detail-label">School</span><span class="detail-value">${s.school_name || '—'}</span></div>
+        <div class="detail-row"><span class="detail-label">Guardian</span><span class="detail-value">${s.guardian_name || '—'}</span></div>
+        <div class="detail-row"><span class="detail-label">Payment Status</span><span class="detail-value">${paymentBadge(payment?.payment_status, payment?.verified_by_admin)}</span></div>
+        <div class="detail-row"><span class="detail-label">Amount Paid</span><span class="detail-value" style="color:var(--gold);">RWF ${Number(payment?.amount || 0).toLocaleString()}</span></div>
+        <div class="detail-row"><span class="detail-label">Reference</span><span class="detail-value" style="font-family:monospace; font-size:12px;">${payment?.transaction_reference || '—'}</span></div>
+        <div class="detail-row"><span class="detail-label">Enrolled In</span><span class="detail-value">${enrollment?.courses?.title || 'Not enrolled'}</span></div>
+        <div class="detail-row"><span class="detail-label">Registered</span><span class="detail-value">${formatDate(s.created_at)}</span></div>
+    `;
+
+    document.getElementById('modalFooter').innerHTML = `
+        <button class="modal-close" onclick="closeModal()" style="padding:8px 18px;">Close</button>
+        ${payment && !payment.verified_by_admin && payment.payment_status === 'pending' ? `
+        <button class="btn-verify" onclick="closeModal(); verifyPaymentByStudent('${s.id}')">
+            <i class="fas fa-check"></i> Verify Payment
+        </button>` : ''}
+    `;
+
+    document.getElementById('studentModal').classList.add('open');
+};
+
+// ── Toggle Enrollment Access ──
+window.toggleEnrollmentAccess = async (enrollmentId, currentAccess) => {
+    const { error } = await supabase
+        .from('course_enrollments')
+        .update({ access_granted: !currentAccess })
+        .eq('id', enrollmentId);
+
+    if (error) {
+        showToast('Error: ' + error.message, 'error');
+    } else {
+        showToast(currentAccess ? 'Access revoked.' : 'Access granted!', 'success');
+        await loadEnrollments();
+        await loadStats();
+    }
+};
+
+// ── Filter / Search ──
+window.filterPayments = (filter, btn) => {
+    currentFilter = filter;
+    document.querySelectorAll('#section-payments .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filtered = filter === 'all' ? allPayments :
+        filter === 'verified' ? allPayments.filter(p => p.verified_by_admin) :
+        filter === 'rejected' ? allPayments.filter(p => p.payment_status === 'rejected') :
+        allPayments.filter(p => p.payment_status === 'pending' && !p.verified_by_admin);
+
+    renderPayments(filtered);
+};
+
+window.searchPayments = (query) => {
+    const q = query.toLowerCase();
+    const filtered = allPayments.filter(p =>
+        p.student_profiles?.full_name?.toLowerCase().includes(q) ||
+        p.transaction_reference?.toLowerCase().includes(q)
+    );
+    renderPayments(filtered);
+};
+
+window.searchStudents = (query) => {
+    const q = query.toLowerCase();
+    const filtered = allStudents.filter(s =>
+        s.full_name?.toLowerCase().includes(q) ||
+        s.phone_number?.includes(q) ||
+        s.selected_program?.toLowerCase().includes(q)
+    );
+    renderStudents(filtered);
+};
+
+// ── Navigation ──
+window.showSection = (section) => {
+    ['overview','payments','students','enrollments','courses'].forEach(s => {
+        document.getElementById(`section-${s}`).style.display = s === section ? 'block' : 'none';
+    });
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    event.currentTarget?.classList.add('active');
+    const titles = { overview: 'Dashboard Overview', payments: 'Payment Management', students: 'All Students', enrollments: 'Course Enrollments', courses: 'Course Library' };
+    document.getElementById('pageTitle').textContent = titles[section];
+};
+
+// ── Refresh ──
+window.refreshData = async () => {
+    showToast('Refreshing data...', 'success');
+    await loadAllData();
+};
+
+// ── Logout ──
+window.handleLogout = async () => {
+    if (confirm('Are you sure you want to logout?')) {
+        await supabase.auth.signOut();
+        window.location.href = '/login.html';
+    }
+};
+
+// ── Modal ──
+window.closeModal = () => {
+    document.getElementById('studentModal').classList.remove('open');
+};
+
+// ── Toast ──
+window.showToast = (message, type = 'success') => {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+        <i class="toast-icon fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 4000);
+};
+
+// ── Helpers ──
+function studentRow(s, payment, enrollment) {
+    const initials = (s.full_name||'?').split(' ').map(n=>n[0]).join('').slice(0,2);
+    return `
+    <tr>
+        <td>
+            <div class="student-info">
+                <div class="student-avatar">${initials}</div>
+                <div>
+                    <div class="student-name">${s.full_name}</div>
+                </div>
+            </div>
+        </td>
+        <td style="font-size:12.5px;">${s.selected_program || '—'}</td>
+        <td>${paymentBadge(payment?.payment_status, payment?.verified_by_admin)}</td>
+        <td>
+            <span class="badge ${enrollment?.access_granted ? 'badge-enrolled' : 'badge-not-enrolled'}">
+                ${enrollment?.access_granted ? 'Enrolled' : 'Not enrolled'}
+            </span>
+        </td>
+        <td style="font-size:12px; color:var(--text-muted);">${formatDate(s.created_at)}</td>
+        <td>
+            <button class="action-btn" onclick="viewStudent('${s.id}')"><i class="fas fa-eye"></i></button>
+        </td>
+    </tr>`;
+}
+
+function paymentBadge(status, verified) {
+    if (verified) return `<span class="badge badge-verified"><i class="fas fa-check-circle"></i> Verified</span>`;
+    if (status === 'rejected') return `<span class="badge badge-rejected"><i class="fas fa-times-circle"></i> Rejected</span>`;
+    if (status === 'pending') return `<span class="badge badge-pending"><i class="fas fa-clock"></i> Pending</span>`;
+    return `<span class="badge badge-not-enrolled">No Payment</span>`;
+}
+
+function formatDate(dateStr) {
+    if (!dateStr) return '—';
+    return new Date(dateStr).toLocaleDateString('en-RW', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+</script>
+</body>
 </html>
